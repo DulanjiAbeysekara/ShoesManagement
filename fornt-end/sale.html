@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shoe Management System</title>
+
+    <script src="assest/bootstrap-5.3.2-dist/jquery-3.6.1.min.js"></script>
+    <script src="assest/bootstrap-5.3.2-dist/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="assest/bootstrap-5.3.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="assest/8.0.1_normalize.css">
+    <link rel="stylesheet" href="assest/new.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+
+</head>
+<body style="background:#9D4DFF;" >
+
+
+<header>
+
+
+    <nav class="navbar navbar-expand-lg" style="background-image: linear-gradient(to left, #6B3278 10%, #9D4DFF); height: 12vh;">
+        <div class="logo">
+            <img  class="roundedImage" src="assest/image/img2.jpeg ">
+        </div>
+    <div class="container-fluid" >
+        <a class="navbar-brand" style="position: absolute; left: 12%; font-family:Abril Fatface ;"  href="#">Trendy Treads</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0"  style="position: relative; left: 30%;">
+                <li class="nav-item">
+                    <a class="nav-link active text-white" aria-current="page" id="itemR"  style="font-weight: bold;" herf="" >Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" id="saleR">Sale</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">Supplier</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">Customer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">Employee</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">Inventory</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">Admin Panel</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">User</a>
+                </li>
+            </ul>
+            <form class="d-flex" role="search">
+                <button id="singIn" type="button" class="btn btn-outline-info">Singin</button>
+                <button type="button" class="btn btn-outline-info ">Singup</button>
+
+<!--                6B3278 9D4DFF BA53DE-->
+            </form>
+        </div>
+    </div>
+</nav>
+</header>
+
+<main class="container-fluid" id="CustomerSection">
+    <!-- Customer Header Start -->
+    <div class="container d-flex flex-grow-1 flex-column">
+        <div class="position-relative d-inline-block mt-3 mt-lg-4 mt-md-4 text-white">
+            <h2 id="H1-3" style="font-family: 'Abril Fatface';  font-size: 24px;"><i class="bi bi-people"></i> Customer
+            </h2>
+        </div>
+    </div>
+    <!-- Customer Header End -->
+
+    <!-- Customer Header Section Start -->
+    <div class="container d-flex flex-grow-1 flex-column sectionBorder" style="background-color: #dfe4ea">
+        <div class="position-relative d-inline-block mt-3 mt-lg-4 mt-md-4">
+
+            <hr>
+        </div>
+        <!-- Customer Header Section End -->
+
+        <!-- Customer Details Section Start -->
+        <div class="row justify-content-around " style="height: max-content">
+
+            <!-- Customer Details Search Section Start -->
+            <div class="col-10 col-md-6 col-lg-5 p-0 mt-5 rounded-3 sectionBorder"
+                 style="background-color: white;height:  max-content ">
+                <h4 class="text-center p-2 text-light rounded-3" style="background: #16A085; font-family:Abril Fatface;">Manage Customer</h4>
+
+                <div class="mb-3 ms-3 me-3 mt-3 ">
+                    <label class="fw-bold" for="searchCusId">Search Customer :</label>
+                    <input class="form-control me-2 mt-2" id="searchCusId" placeholder="Input Name/NIC/Tp Here"
+                           type="search">
+                </div>
+                <div class="m-4">
+                    <button class="btn btn-success mt-2 m-2" id="btnSaveCustomer" type="button">+ New Customer
+                    </button>
+
+                    <button class="btn btn-warning mt-2 m-2" id="btnUpdateCustomer" type="button">Update Customer
+                    </button>
+
+                    <button class="btn btn-danger mt-2 m-2" id="btnDeleteCustomer" type="button">Delete Customer
+                    </button>
+
+                </div>
+            </div>
+            <!-- Customer Details Search Section End -->
+
+            <!-- Customer Details Search Section Start -->
+            <div class="col-10 col-md-5 col-lg-4 p-0 mt-2 rounded-3 sectionBorder" style="background-color: white">
+
+                <form action="customer" id="customerForm">
+                    <div class="mb-3 ms-3 me-3 mt-3 ">
+                        <label class="fw-bold" for="txtCusId">Customer ID :</label>
+                        <input class="form-control" id="txtCusId" type="text" name="id">
+                        <span class="control-error"></span>
+                    </div>
+
+                    <div class="mb-3 ms-3 me-3 mt-3 ">
+                        <label class="fw-bold" for="txtCusName">Customer Name :</label>
+                        <input class="form-control" id="txtCusName" type="text" name="name">
+                        <span class="control-error"></span>
+                    </div>
+
+                    <div class="mb-3 ms-3 me-3 mt-3 ">
+                        <label class="fw-bold" for="txtCusAddress">Customer Address :</label>
+                        <input class="form-control" id="txtCusAddress" type="text" name="address">
+                        <span class="control-error"></span>
+                    </div>
+
+                    <div class="mb-3 ms-3 me-3 mt-3 ">
+                        <label class="fw-bold" for="txtCustomerSalary">Customer Salary :</label>
+                        <input class="form-control" id="txtCustomerSalary" type="text" name="salary">
+                        <span class="control-error"></span>
+                    </div>
+                </form>
+
+            </div>
+            <!-- Customer Details Search Section End -->
+
+        </div>
+        <!-- Customer Details Section End -->
+
+        <!-- View Customer Details Table Start -->
+        <div class="row mt-1 mt-md-2 mt-lg-4 justify-content-around" style="height: 320px;">
+            <div class="col-11 justify-content-around sectionBorder" style="height: 290px; background: white">
+                <div class="customerTableDiv overflow-auto" style="height: 270px;">
+                    <table class="table table-success table-striped table-bordered table-hover">
+                        <thead class="text-light table-dark text-center  table-bordered sticky-top">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Salary</th>
+                        </tr>
+                        </thead>
+                        <tbody id="customerTable"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- View Customer Details Table End -->
+    </div>
+</main>
+
+</body>
+
+</html>
