@@ -36,3 +36,70 @@
     border: 2px solid black;
 
 }
+
+.singup-button{
+    border:2px solid #0dcaf0;
+    color: white;
+    font-size: 15px;
+    padding:8px 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: 0.3s background-color;
+}
+.singup-button:hover{
+    background-color: #0dcaf0;
+
+
+}
+/*#backgroundImage{*/
+/*    align-items: center;*/
+/*}*/
+/*#backgroundImage::before{*/
+/*    content: '';*/
+/*    background-image: url("image/img4.jpeg");*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: cover;*/
+/*    background-position: center;*/
+/*    !*position: absolute;*!*/
+/*    left: 0;*/
+/*    top: 0;*/
+/*    bottom: 0;*/
+/*    right: 0;*/
+
+/*}*/
+
+.navbar-toggler{
+    border: none;
+    font-size:1.25rem;
+}
+
+.nav-link{
+    font-weight: 500;
+    position: relative;
+
+}
+
+.nav-link:hover,.nav-link.active{
+    color: black;
+
+}
+
+@media (min-width: 991px){
+    .nav-link::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background-color: white;
+        visibility: hidden;
+        transition: 0.3s ease-in-out;
+    }
+}
+.nav-link:hover::before{
+    width: 100%;
+    visibility: visible;
+}
+
