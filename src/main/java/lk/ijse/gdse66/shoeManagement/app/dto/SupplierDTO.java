@@ -23,5 +23,5 @@ public class SupplierDTO implements Serializable{
     private String Address;
     private String ContactNo1;
     private String ContactNo2;
-    private String Emai;
+    private String Email;
 }

@@ -69,7 +69,7 @@
 
 <main class="container-fluid ">
 
-  <div id="backgroundImage" class="container d-flex flex-grow-1 flex-column sectionBorder  position-absolute" style="top: 95%; left: 50%;  transform: translate(-50%, -50%); background-color: gray;">
+  <div id="backgroundImage" class="container d-flex flex-grow-1 flex-column sectionBorder  position-absolute" style="top: 95%; left: 50%; height: max-content;  transform: translate(-50%, -50%); background-color: gray;">
 
     <div>
       <h3 style="font-family: Abril Fatface; font-size: 26px; left: 20px; top: 20px; position: relative;" class="text-white">Sales
@@ -119,7 +119,7 @@
         </form>
       </div>
 
-      <div class="col-md-5 text-left  position-relative" style="margin-top:3%;">
+      <div class="col-md-5 text-left  position-relative" style="margin-top:-3%;">
         <form>
 
           <div class="form-group">
@@ -164,16 +164,16 @@
           </div>
 
 
-          <div class="input-group col mb-5" style="position: absolute; top:105%; width: 325px;">
-            <input type="text" class="form-control " placeholder="Customer code/Contact no" aria-label="Recipient's username" aria-describedby="button-addon2">
+          <div class="input-group col mb-5" style="position: absolute; top:90%; width: 250px; left: 55%;">
+            <input type="text" class="form-control " placeholder="Order No" aria-label="Recipient's username" aria-describedby="button-addon2">
             <button class="btn btn-info text-black" type="button" id="button-addon2">Search</button>
           </div>
 
 
 
-          <div class="mt-2" style="position: absolute; top: 100%;">
+          <div class="mt-2" style="position: absolute; top: 88%;">
 
-            <button type="submit" style="font-weight: bold;" class="btn btn-danger ">+Save Customer</button>
+            <button type="submit" style="font-weight: bold;" class="btn btn-danger ">+Save</button>
 
             <button type="submit" style="font-weight: bold;" class="btn btn-warning">Update</button>
 
@@ -186,21 +186,23 @@
         </form>
       </div>
       <div class="row mt-1 mt-md-3 mt-lg-5 justify-content-around" style="height: 320px; ">
-        <div class="col-11 justify-content-around sectionBorder" style="height: 290px; background: white; ">
+        <div class="col-11 justify-content-around sectionBorder" style="height: 290px; background: white; position: absolute; top:60%;">
           <div class="customerTableDiv overflow-auto" style="height: 270px; ">
             <table class="table table-white table-striped table-bordered table-hover ">
               <thead class="text-light table-dark text-center  table-bordered sticky-top">
               <tr>
-                <th>Customer code</th>
-                <th>Name</th>
-                <th>Gender</th>
-                <th>Join date as a loyalty customer</th>
-                <th>Level </th>
-                <th>Total points</th>
-                <th>Date Of Birth</th>
-                <th>Contact No</th>
-                <th>Address</th>
-                <th>Email</th>
+                <th>Item code </th>
+                <th>Order no</th>
+                <th>Customer name </th>
+                <th>Item desc</th>
+                <th>Size </th>
+                <th>Unit price </th>
+                <th>Item qty</th>
+                <th>Total price </th>
+                <th>Purchase date</th>
+                <th>Payment method</th>
+                <th>Added points</th>
+                <th>Cashier name</th>
               </tr>
               </thead>
               <tbody id="customerTable"></tbody>
