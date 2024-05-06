@@ -27,7 +27,7 @@ public class CustomerController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.CREATED)
+//    @ResponseStatus(HttpStatus.CREATED)
     CustomerDTO saveCustomer(@RequestBody CustomerDTO customerDTO){
         System.out.println(customerDTO);
         return customerService.saveCustomers(customerDTO);
@@ -40,7 +40,7 @@ public class CustomerController {
     }
 
     @PatchMapping(value = "/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateCustomer(@PathVariable("id") String id, @RequestBody CustomerDTO customerDTO){
         customerDTO.setCustomerCode(id);
         customerService.updateCustomer(id,customerDTO);
