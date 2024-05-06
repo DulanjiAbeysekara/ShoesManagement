@@ -42,8 +42,9 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void updateCustomer(String id, CustomerDTO customerDTO) {
+    public CustomerDTO updateCustomer(String id,CustomerDTO customerDTO) {
 
+        return customerDTO;
     }
 
     @Override
