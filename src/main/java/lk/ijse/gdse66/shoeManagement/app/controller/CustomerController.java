@@ -26,7 +26,7 @@ public class CustomerController {
         return customerService.getAllCustomers();
     }
 
-    @PostMapping("/save")
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     CustomerDTO saveCustomer(@RequestBody CustomerDTO customerDTO){
         System.out.println(customerDTO);

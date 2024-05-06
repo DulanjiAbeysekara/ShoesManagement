@@ -1,7 +1,7 @@
-package lk.ijse.gdse66.shoeManagement.app.entity;
+package lk.ijse.gdse66.shoeManagement.app.hi;
 
-
-import jakarta.persistence.*;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lk.ijse.gdse66.shoeManagement.app.util.Gender;
 import lk.ijse.gdse66.shoeManagement.app.util.Level;
 import lombok.*;
@@ -13,11 +13,7 @@ import java.util.Date;
 @Setter
 @Getter
 @Builder
-@Entity
-@Table(name = "customer")
-
-public class CustomerEntity {
-    @Id
+public class Customer {
     private String  CustomerCode;
     private String CustomerName;
 
@@ -32,5 +28,4 @@ public class CustomerEntity {
     private int TotalPoints;
     private Date DOB;
     private String Address;
-
 }

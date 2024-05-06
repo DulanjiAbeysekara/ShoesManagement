@@ -2,8 +2,10 @@ package lk.ijse.gdse66.shoeManagement.app.service.impl;
 
 import lk.ijse.gdse66.shoeManagement.app.dto.CustomerDTO;
 import lk.ijse.gdse66.shoeManagement.app.entity.CustomerEntity;
+import lk.ijse.gdse66.shoeManagement.app.hi.Customer;
 import lk.ijse.gdse66.shoeManagement.app.repository.CustomerRepo;
 import lk.ijse.gdse66.shoeManagement.app.service.CustomerService;
+import lk.ijse.gdse66.shoeManagement.app.service.exception.DuplicateRecordException;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,10 +37,10 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO saveCustomers(CustomerDTO customerDTO) {
-        customerDTO.setCustomerCode(UUID.randomUUID().toString());
-        return mapper.map(customerRepo.save(mapper.map(
-            customerDTO, CustomerEntity.class)),CustomerDTO.class);
-
+        if (customerRepo.existsById(customerDTO.getCustomerCode())){
+            throw new DuplicateRecordException("Customer Id is already exists!!");
+        }
+      return mapper.map(customerRepo.save(mapper.map(customerDTO,CustomerEntity.class)),CustomerDTO.class);
     }
 
     @Override
