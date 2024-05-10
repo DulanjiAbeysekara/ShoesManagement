@@ -48,7 +48,7 @@ public class SupplierServiceImpl implements SupplierService {
     @Override
     public SupplierDTO updateSupplier(SupplierDTO supplierDTO) {
         if (!supplierRepo.existsById(supplierDTO.getCode())){
-            throw new NotFoundException("Can't find customer id!!!");
+            throw new NotFoundException("Can't find supplier id!!!");
         }
         return mapper.map(supplierRepo.save(mapper.map(supplierDTO ,SupplierEntity.class)) ,SupplierDTO.class);
     }
@@ -57,7 +57,7 @@ public class SupplierServiceImpl implements SupplierService {
     @Override
     public boolean deleteSupplier(String id) {
         if (!supplierRepo.existsById(id)){
-            throw new NotFoundException("Can't find customer id!!!");
+            throw new NotFoundException("Can't find supplier id!!!");
         }
         supplierRepo.deleteById(id);
         return true;
