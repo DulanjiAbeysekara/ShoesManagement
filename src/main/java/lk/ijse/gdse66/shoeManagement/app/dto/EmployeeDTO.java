@@ -18,16 +18,10 @@ public class EmployeeDTO implements Serializable {
     private String EmployeeCode;
     private String EmployeeName;
     private String EmployeeProfilePic;
-
-    @Enumerated(EnumType.STRING)
     private Gender gender;
-
     private String Status;
     private String Designation;
-
-    @Enumerated(EnumType.STRING)
     private AccessRole accessRole;
-
     private Date Dob;
     private Date DateOfJoin;
     private String AttachedBranch;
