@@ -11,9 +11,9 @@ public interface CustomerService {
 
     CustomerDTO saveCustomers(CustomerDTO customerDTO);
 
-    CustomerDTO updateCustomer(String id,CustomerDTO customerDTO);
+    CustomerDTO updateCustomer(CustomerDTO customerDTO);
 
-    void deleteCustomer(String id);
+    boolean deleteCustomer(String id);
 
 
 }

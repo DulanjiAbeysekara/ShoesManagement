@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Setter
 @Getter
 @Builder
-
+@ToString
 public class SupplierDTO implements Serializable{
     private String code;
     private String name;
@@ -24,4 +24,5 @@ public class SupplierDTO implements Serializable{
     private String ContactNo1;
     private String ContactNo2;
     private String Email;
+
 }

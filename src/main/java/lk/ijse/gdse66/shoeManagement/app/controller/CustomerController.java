@@ -11,40 +11,43 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/customer")
+@RequestMapping("/cust")
+@CrossOrigin(origins = "*")
 public class CustomerController {
 
-    private final CustomerService customerService;
+    @Autowired
+    private  CustomerService customerService;
 
-    public CustomerController(CustomerService customerService) {
-        this.customerService = customerService;
+    public CustomerController() {
+//        this.customerService = customerService;
+        System.out.println("Customer Working");
     }
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping("/getAllCustomers")
     List<CustomerDTO> getAllCustomers(){
         System.out.println("request received");
         return customerService.getAllCustomers();
     }
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseStatus(HttpStatus.CREATED)
-    CustomerDTO saveCustomer(@RequestBody CustomerDTO customerDTO){
+    @PostMapping("/save")
+   public CustomerDTO saveCustomer(@RequestBody CustomerDTO customerDTO){
         System.out.println(customerDTO);
         return customerService.saveCustomers(customerDTO);
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteCustomer(@PathVariable("id") String id){
+    public void deleteCustomer(@PathVariable(value = "id") String id){
+
         customerService.deleteCustomer(id);
     }
 
-    @PatchMapping(value = "/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateCustomer(@PathVariable("id") String id, @RequestBody CustomerDTO customerDTO){
-        customerDTO.setCustomerCode(id);
-        customerService.updateCustomer(id,customerDTO);
+
+    @PatchMapping ("/update")
+    public CustomerDTO update(@RequestBody CustomerDTO customerDTO){
+        System.out.println(customerDTO);
+        return customerService.updateCustomer(customerDTO);
     }
+
 
     @GetMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public CustomerDTO getCustomerDetails(@PathVariable("id")String id){
