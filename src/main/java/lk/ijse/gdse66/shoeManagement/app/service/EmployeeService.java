@@ -17,4 +17,5 @@ public interface EmployeeService {
     boolean deleteEmployee(String id);
 
 
+//    String generateNextId();
 }
