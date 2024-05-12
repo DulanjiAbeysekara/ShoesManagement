@@ -60,8 +60,8 @@ public class CustomerServiceImpl implements CustomerService {
         CustomerEntity customerEntity = customerRepo.findById(customerDTO.getCustomerCode()).get();
         System.out.println("customer is "+customerEntity);
 
-        customerDTO.setLevel(customerEntity.getLevel());
-        customerDTO.setTotalPoints(customerEntity.getTotalPoints());
+//        customerDTO.setLevel(customerEntity.getLevel());
+        customerDTO.setDateOfBirth(customerEntity.getDateOfBirth());
         customerDTO.setJoinDateLoyaltyCustomer(customerEntity.getJoinDateLoyaltyCustomer());
 
         return mapper.map(customerRepo.save(mapper.map(customerDTO, CustomerEntity.class)), CustomerDTO.class);

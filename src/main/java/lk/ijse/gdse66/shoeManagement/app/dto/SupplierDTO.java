@@ -16,9 +16,9 @@ public class SupplierDTO implements Serializable{
     private String code;
     private String name;
     private Category category;
-    private String Address;
-    private String ContactNo1;
-    private String ContactNo2;
-    private String Email;
+    private String address;
+    private String contactNo1;
+    private String contactNo2;
+    private String email;
 
 }

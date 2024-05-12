@@ -16,19 +16,19 @@ import java.util.Date;
 
 public class CustomerEntity {
     @Id
-    private String  CustomerCode;
-    private String CustomerName;
+    private String  customerCode;
+    private String customerName;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    private Date JoinDateLoyaltyCustomer;
+    private Date joinDateLoyaltyCustomer;
 
     @Enumerated(EnumType.STRING)
     private Level level;
 
-    private int TotalPoints;
-    private Date DOB;
-    private String Address;
+    private int totalPoints;
+    private Date dateOfBirth;
+    private String address;
 
 }
