@@ -4,6 +4,7 @@ import lk.ijse.gdse66.shoeManagement.app.dto.CustomerDTO;
 import lk.ijse.gdse66.shoeManagement.app.dto.EmployeeDTO;
 import lk.ijse.gdse66.shoeManagement.app.entity.CustomerEntity;
 import lk.ijse.gdse66.shoeManagement.app.entity.EmployeeEntity;
+import lk.ijse.gdse66.shoeManagement.app.repository.CustomerRepo;
 import lk.ijse.gdse66.shoeManagement.app.repository.EmployeeRepo;
 import lk.ijse.gdse66.shoeManagement.app.service.EmployeeService;
 import lk.ijse.gdse66.shoeManagement.app.service.exception.DuplicateRecordException;
@@ -11,15 +12,15 @@ import lk.ijse.gdse66.shoeManagement.app.service.exception.NotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class EmployeeServiceImpl implements EmployeeService {
-
     @Autowired
     private EmployeeRepo employeeRepo;
-
     @Autowired
     private ModelMapper mapper;
 
@@ -31,7 +32,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public List<EmployeeDTO> getAllEmployee() {
         return employeeRepo.findAll().stream().map(
-                employee->mapper.map(employee,EmployeeDTO.class)).toList();
+                employee -> mapper.map(employee, EmployeeDTO.class)).toList();
     }
 
     @Override
@@ -42,32 +43,35 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public EmployeeDTO saveEmployee(EmployeeDTO employeeDTO) {
         if (employeeRepo.existsById(employeeDTO.getEmployeeCode())) {
-            throw new DuplicateRecordException("customer ID is Already Exist");
+            throw new DuplicateRecordException("employee ID is Already Exist");
 
         }
         System.out.println(employeeDTO);
         return mapper.map(employeeRepo.save(mapper.map(employeeDTO, EmployeeEntity.class)), EmployeeDTO.class);
     }
 
+
     @Override
-    public EmployeeDTO updateEmployee(EmployeeDTO employeeDTO) {
+    public EmployeeDTO updateEmployee( EmployeeDTO employeeDTO) {
         if (!employeeRepo.existsById(employeeDTO.getEmployeeCode())){
             throw new NotFoundException("Can't find employee id !!");
         }
-//
-//        EmployeeEntity employeeEntity = employeeRepo.findById(employeeDTO.getEmployeeCode()).get();
-//        System.out.println("customer is "+employeeEntity);
-//
-//        employeeDTO.se(customerEntity.getLevel());
-//        customerDTO.setTotalPoints(customerEntity.getTotalPoints());
-//        customerDTO.setJoinDateLoyaltyCustomer(customerEntity.getJoinDateLoyaltyCustomer());
+
+        EmployeeEntity employeeEntity = employeeRepo.findById(employeeDTO.getEmployeeCode()).get();
+        System.out.println("employee is "+employeeEntity);
+
+        employeeDTO.setAccessRole(employeeEntity.getAccessRole());
+        employeeDTO.setAttachedBranch(employeeEntity.getAttachedBranch());
+        employeeDTO.setAddress(employeeEntity.getAddress());
 
         return mapper.map(employeeRepo.save(mapper.map(employeeDTO, EmployeeEntity.class)), EmployeeDTO.class);
 
     }
+
+
     @Override
     public boolean deleteEmployee(String id) {
-        if (!employeeRepo.existsById(id)){
+        if (!employeeRepo.existsById(id)) {
             throw new NotFoundException("Can't find employee id!!!");
         }
         employeeRepo.deleteById(id);

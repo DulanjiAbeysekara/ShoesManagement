@@ -7,32 +7,30 @@ import lombok.*;
 
 import java.util.Date;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter
-@Getter
-@Builder
 @Entity
 @Table(name = "Employee")
 public class EmployeeEntity {
     @Id
-    private String EmployeeCode;
+    private String employeeCode;
 
-    private String EmployeeName;
-    private String EmployeeProfilePic;
+    private String employeeName;
+//    private String EmployeeProfilePic;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    private String Status;
-    private String Designation;
+    private String status;
+    private String designation;
 
     @Enumerated(EnumType.STRING)
     private AccessRole accessRole;
 
-    private Date Dob;
-    private Date DateOfJoin;
-    private String AttachedBranch;
-    private String Address;
-    private String ContactNo;
+    private Date dob;
+    private Date dateOfJoin;
+    private String attachedBranch;
+    private String address;
+    private String contactNo;
 }
