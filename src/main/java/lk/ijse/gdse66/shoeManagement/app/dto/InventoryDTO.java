@@ -1,4 +1,27 @@
-package lk.ijse.gdse66.shoeManagement.app.dto;
-
-public class InventoryDTO{
-}
+//package lk.ijse.gdse66.shoeManagement.app.dto;
+//
+//import lombok.AllArgsConstructor;
+//import lombok.Data;
+//import lombok.NoArgsConstructor;
+//import lombok.ToString;
+//
+//import java.io.Serializable;
+//
+//@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
+//@ToString
+//public class InventoryDTO implements Serializable {
+//    private String itemCode;
+//    private String itemDesc;
+//    private String itemPicture;
+//    private String category;
+//    private int size;
+//    private String supplierCode;
+//    private String supplierName;
+//    private Double unitpricesale;
+//    private Double unitPriceBuy;
+//    private Double expectedProfit;
+//    private Double profitMargin;
+//    private String status;
+//}

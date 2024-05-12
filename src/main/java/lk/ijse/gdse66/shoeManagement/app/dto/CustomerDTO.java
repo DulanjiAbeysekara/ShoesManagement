@@ -7,13 +7,14 @@ import lk.ijse.gdse66.shoeManagement.app.util.Gender;
 import lk.ijse.gdse66.shoeManagement.app.util.Level;
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class CustomerDTO{
+public class CustomerDTO implements Serializable {
    private String  customerCode;
    private String customerName;
    private Gender gender;
