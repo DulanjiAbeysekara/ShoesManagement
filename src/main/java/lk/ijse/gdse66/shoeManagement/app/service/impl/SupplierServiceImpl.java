@@ -1,6 +1,7 @@
 package lk.ijse.gdse66.shoeManagement.app.service.impl;
 
 import lk.ijse.gdse66.shoeManagement.app.dto.SupplierDTO;
+import lk.ijse.gdse66.shoeManagement.app.entity.CustomerEntity;
 import lk.ijse.gdse66.shoeManagement.app.entity.SupplierEntity;
 import lk.ijse.gdse66.shoeManagement.app.repository.SupplierRepo;
 import lk.ijse.gdse66.shoeManagement.app.service.SupplierService;
@@ -50,6 +51,11 @@ public class SupplierServiceImpl implements SupplierService {
         if (!supplierRepo.existsById(supplierDTO.getCode())){
             throw new NotFoundException("Can't find supplier id!!!");
         }
+        SupplierEntity supplierEntity = supplierRepo.findById(supplierDTO.getCode()).get();
+        System.out.println("supplier is "+supplierEntity);
+
+        supplierDTO.setCategory(supplierEntity.getCategory());
+
         return mapper.map(supplierRepo.save(mapper.map(supplierDTO ,SupplierEntity.class)) ,SupplierDTO.class);
     }
 
