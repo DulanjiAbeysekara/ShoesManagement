@@ -61,8 +61,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         System.out.println("employee is "+employeeEntity);
 
         employeeDTO.setAccessRole(employeeEntity.getAccessRole());
-        employeeDTO.setAttachedBranch(employeeEntity.getAttachedBranch());
-        employeeDTO.setAddress(employeeEntity.getAddress());
+        employeeDTO.setDob(employeeEntity.getDob());
+        employeeDTO.setDateOfJoin(employeeEntity.getDateOfJoin());
 
         return mapper.map(employeeRepo.save(mapper.map(employeeDTO, EmployeeEntity.class)), EmployeeDTO.class);
 
