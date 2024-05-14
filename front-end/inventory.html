@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shoe Management</title>
+  <link rel="stylesheet" href="assest/bootstrap-5.3.2-dist/css/bootstrap.css">
+  <script src="assest/bootstrap-5.3.2-dist/js/bootstrap.bundle.js"></script>
+  <link rel="stylesheet" href="assest/new.css">
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+
+
+
+</head>
+<body style="background:#9D4DFF;">
+
+<header>
+  <nav class="navbar navbar-expand-lg fixed-top" style="background-image: linear-gradient(to left, #6B3278 10%, #9D4DFF); ">
+    <div class="container-fluid">
+      <a class="navbar-brand" style="font-family:Abril Fatface;"  href="#">Trendy Treads</a>
+
+      <a herf="" class="singup-button  me-auto text-black active text-white "  >Sing Up</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title  active text-bol text-white" style="font-family: Abril Fatface" id="offcanvasNavbarLabel">Trendy Treads</h5>
+          <button type="button" class="btn-close bg-light" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav  justify-content-center flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active text-bol text-white" aria-current="page" style="font-family: AcmeStatic;" id="linkHome" href="homepage.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-lg-2 active text-bol text-white" style="font-family: AcmeStatic;" id="linkCustomer" href="customer.html">Customer</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link mx-lg-2 active text-bol  text-white" style="font-family: AcmeStatic;" id="linkEmployee" href="employee.html">Employee</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link mx-lg-2 active text-bol  text-white" style="font-family: AcmeStatic;" id="linkSupplier" href="Supplier.html">Suppliers</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link mx-lg-2 active text-bol  text-white" style="font-family: AcmeStatic;" id="linkSale" href="sales.html">Sale</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link mx-lg-2  active text-bol  text-white"style="font-family: AcmeStatic;" id="linkInventory" href="inventory.html">Inventory</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </nav>
+</header>
+
+
+<!-----------------------------------------------inventory------------------------------->
+
+<main>
+  <div class="container">
+    <h2 style="font-family: Abril Fatface;">Inventory Form</h2>
+    <div  style="background-color: gray;" class="row justify-content-center">
+
+      <h3 style="font-family: Abril Fatface; color: white;">Inventory</h3>
+      <div  class="col-md-8">
+        <form>
+
+          <div class="row">
+            <div class="col-md-6">
+
+              <div class="form-group mb-4 mt-4">
+                <label for="itemCode">Item Code:</label>
+                <input type="text" class="form-control" id="itemCode">
+              </div>
+
+
+              <div class="form-group mb-4">
+                <label for="itemDesc">Item Desc:</label>
+                <input type="text" class="form-control" id="itemDesc">
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="itemPicture">Item Picture:</label>
+                <input type="text" class="form-control" id="itemPicture">
+              </div>
+
+              <div class="form-group mb-4 mt-4">
+                <label for="category">Category:</label>
+                <select class="form-control" id="category">
+                  <option>Sports</option>
+                  <option>Hills</option>
+                  <option>Flate</option>
+                </select>
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="size">Size:</label>
+                <input type="text" class="form-control" id="size">
+              </div>
+
+
+
+              <div class="form-group mb-4 mt-4">
+                <label for="supplierCode1">Supplier Code:</label>
+                <select class="form-control" id="supplierCode1">
+                  <option>Sup001</option>
+                  <option>Sup002</option>
+                  <option>Sup003</option>
+                </select>
+              </div>
+
+
+            </div>
+
+
+              <!-- Other form fields -->
+
+              <div class="col-md-6 mb-4 mt-4 ">
+
+              <div class="form-group mb-4">
+                <label for="supplierName2">Supplier Name:</label>
+                <input type="text" class="form-control" id="supplierName2">
+              </div>
+
+
+              <div class="form-group mb-4">
+                <label for="unitpricesale">Unit Price Sale:</label>
+                <input type="date" class="form-control" id="unitpricesale">
+              </div>
+
+
+              <div class="form-group mb-4">
+                <label for="unitPriceBuy">Unit Price Buy:</label>
+                <input type="text" class="form-control" id="unitPriceBuy">
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="expectedProfit">Expected Profit:</label>
+                <input type="text" class="form-control" id="expectedProfit">
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="profitMargin">Profit Margin:</label>
+                <input type="text" class="form-control" id="profitMargin">
+              </div>
+
+
+              <div class="form-group mb-4 mt-4">
+                <label for="Inventorystatus">Status:</label>
+                <select class="form-control" id="Inventorystatus">
+                  <option>Good</option>
+                  <option>Bad</option>
+                </select>
+              </div>
+
+
+
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 mb-4 mt-4 text-left">
+
+              <button type="submit" class="btn btn-danger">+Save Sale</button>
+              <button type="button" class="btn btn-warning">Update</button>
+              <button type="button" class="btn btn-success">Delete</button>
+
+
+            </div>
+
+
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-5 mb-4 mt-4 text-left">
+              <input text="text" placeholder="Item Code" class="form-control" id="serachCust">
+              <button class="btn btn-primary mb-2 mt-2" type="submit">Search</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+
+    <!---------------------------------------Inventory Table------------------------------------>
+
+    <div class="row mt-1 mt-md-2 mt-lg-4 justify-content-around" style="height: 320px;">
+      <div class="col-11 justify-content-around sectionBorder" style="height: 290px; background: white">
+        <div class="customerTableDiv overflow-auto" style="height: 270px;">
+          <table class="table table-success table-striped table-bordered table-hover">
+            <thead class="text-light table-dark text-center  table-bordered sticky-top">
+            <tr>
+              <th>Item  Code</th>
+              <th>Item Desc</th>
+              <th>Item Picture</th>
+              <th>Category</th>
+              <th>Size</th>
+              <th>Supplier Code</th>
+              <th>Supplier Name</th>
+              <th>Unit Price Sale</th>
+              <th>Unit Price Buy</th>
+              <th>Expected Profit</th>
+              <th>Profit Margin</th>
+              <th>Status</th>
+            </tr>
+            </thead>
+            <tbody id="customerTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+</main>
+
+
+
+</body>
+</html>

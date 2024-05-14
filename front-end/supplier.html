@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shoe Management</title>
+    <link rel="stylesheet" href="assest/bootstrap-5.3.2-dist/css/bootstrap.css">
+    <script src="assest/bootstrap-5.3.2-dist/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="assest/new.css">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+
+
+
+</head>
+
+
+<body style="background:#9D4DFF;">
+
+<header>
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-image: linear-gradient(to left, #6B3278 10%, #9D4DFF); ">
+        <div class="container-fluid">
+            <a class="navbar-brand" style="font-family:Abril Fatface;"  href="#">Trendy Treads</a>
+
+            <a herf="" class="singup-button  me-auto text-black active text-white "  >Sing Up</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title  active text-bol text-white" style="font-family: Abril Fatface" id="offcanvasNavbarLabel">Trendy Treads</h5>
+                    <button type="button" class="btn-close bg-light" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav  justify-content-center flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active text-bol text-white" aria-current="page" style="font-family: AcmeStatic;" id="linkHome" href="homepage.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2 active text-bol text-white" style="font-family: AcmeStatic;" id="linkCustomer" href="customer.html">Customer</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2 active text-bol  text-white" style="font-family: AcmeStatic;" id="linkEmployee" href="employee.html">Employee</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2 active text-bol  text-white" style="font-family: AcmeStatic;" id="linkSupplier" href="Supplier.html">Suppliers</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2 active text-bol  text-white" style="font-family: AcmeStatic;" id="linkSale" href="sales.html">Sale</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2  active text-bol  text-white"style="font-family: AcmeStatic;" id="linkInventory" href="inventory.html">Inventory</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </nav>
+</header>
+
+
+<!-------------------------------------Supplier--------------------------------------------->
+
+<main>
+    <div class="container">
+        <h2 style="font-family: Abril Fatface;">Supplier Form</h2>
+        <div  style="background-color: gray;" class="row justify-content-center">
+
+            <h3 style="font-family: Abril Fatface; color: white;">Supplier</h3>
+            <div  class="col-md-8">
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group mb-4 mt-4">
+                                <label for="supplierCode">Supplier Code:</label>
+                                <input type="text" class="form-control" id="supplierCode">
+                            </div>
+
+
+                            <div class="form-group mb-4">
+                                <label for="supplierName">Supplier Name:</label>
+                                <input type="text" class="form-control" id="supplierName">
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <label for="category">Category:</label>
+                                <select class="form-control" id="category">
+                                    <option>INTERNATIONAL</option>
+                                    <option>LOCAL</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <label for="supplierAddress">Address:</label>
+                                <input type="text" class="form-control" id="supplierAddress">
+                            </div>
+
+
+
+                            <!-- Other form fields -->
+                        </div>
+                        <div class="col-md-6">
+
+
+                            <div class="form-group mb-4 mt-4">
+                                <label for="contactNo1">Contact No1:</label>
+                                <input type="text" class="form-control" id="contactNo1">
+                            </div>
+
+
+                            <div class="form-group mb-4">
+                                <label for="contactNo2">Contact No2:</label>
+                                <input type="date" class="form-control" id="contactNo2">
+                            </div>
+
+
+                            <div class="form-group mb-4">
+                                <label for="email">Email:</label>
+                                <input type="text" class="form-control" id="email">
+                            </div>
+                            <!-- Other form fields -->
+
+
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12 mb-4 mt-4 text-left">
+
+                            <button type="submit" class="btn btn-danger">+Save Supplier</button>
+                            <button type="button" class="btn btn-warning">Update</button>
+                            <button type="button" class="btn btn-success">Delete</button>
+
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-5 mb-4 mt-4 text-left">
+                            <input text="text" placeholder="Supplier Code" class="form-control" id="serachSupplier">
+                            <button class="btn btn-primary mb-2 mt-2" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+        <!----------------------------------------Supplier Table------------------------------------>
+
+        <div class="row mt-1 mt-md-2 mt-lg-4 justify-content-around" style="height: 320px;">
+            <div class="col-11 justify-content-around sectionBorder" style="height: 290px; background: white">
+                <div class="customerTableDiv overflow-auto" style="height: 270px;">
+                    <table class="table table-success table-striped table-bordered table-hover">
+                        <thead class="text-light table-dark text-center  table-bordered sticky-top">
+                        <tr>
+                            <th>Supplier Code</th>
+                            <th>Supplier Name</th>
+                            <th>Category</th>
+                            <th>Address</th>
+                            <th>Contact No1</th>
+                            <th>Contact No2</th>
+                            <th>Email</th>
+
+                        </tr>
+                        </thead>
+                        <tbody id="customerTable"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    </div>
+
+</main>
+
+
+</body>
+</html>

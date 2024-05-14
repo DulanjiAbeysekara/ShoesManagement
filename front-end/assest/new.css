@@ -1,12 +1,4 @@
-/*body{*/
-/*    position:absolute;*/
-/*    !*background-color: #ec2323;*!*/
-/*    filter: brightness(20%);*/
-/*    background-repeat: no-repeat;*/
-/*    !*background-image: url('../assest/image/image1.jpeg');*!*/
-/*    background-repeat: no-repeat;*/
 
-/*}*/
 
 
 #singIn{
@@ -51,22 +43,6 @@
 
 
 }
-/*#backgroundImage{*/
-/*    align-items: center;*/
-/*}*/
-/*#backgroundImage::before{*/
-/*    content: '';*/
-/*    background-image: url("image/img4.jpeg");*/
-/*    background-repeat: no-repeat;*/
-/*    background-size: cover;*/
-/*    background-position: center;*/
-/*    !*position: absolute;*!*/
-/*    left: 0;*/
-/*    top: 0;*/
-/*    bottom: 0;*/
-/*    right: 0;*/
-
-/*}*/
 
 .navbar-toggler{
     border: none;
@@ -101,5 +77,19 @@
 .nav-link:hover::before{
     width: 100%;
     visibility: visible;
+}
+
+
+main {
+    padding-top: 70px; /* Adjust this value as needed */
+}
+
+
+.custom-form {
+    max-width: 200px; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center the form horizontally */
+}
+.row justify-content-center{
+    background-color: grey;
 }
 
