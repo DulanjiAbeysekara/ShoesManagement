@@ -15,6 +15,6 @@ public interface CustomerService {
 
     boolean deleteCustomer(String id);
 
-
+    List<CustomerDTO> searchCustomer(String customerName);
 }
 

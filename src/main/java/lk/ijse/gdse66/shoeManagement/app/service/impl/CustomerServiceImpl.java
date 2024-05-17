@@ -77,4 +77,16 @@ public class CustomerServiceImpl implements CustomerService {
         customerRepo.deleteById(id);
         return true;
     }
+
+    @Override
+    public List<CustomerDTO> searchCustomer(String customerName) {
+        List<CustomerEntity> foundCustomer = customerRepo.findByCustomerNameStartingWith(customerName);
+
+        if (foundCustomer.isEmpty()) {
+            throw new NotFoundException("No customers found with the name: " + customerName);
+        }
+        return foundCustomer.stream()
+                .map(customer -> mapper.map(customer, CustomerDTO.class))
+                .toList();
+    }
 }

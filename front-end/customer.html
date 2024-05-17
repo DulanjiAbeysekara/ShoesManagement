@@ -85,28 +85,28 @@
                         <div class="col-md-6">
 
                             <div class="form-group mb-4 mt-4">
-                                <label for="customerCode">Customer Code:</label>
-                                <input type="text" class="form-control" id="customerCode">
+                                <label for="txtCustomerCode">Customer Code:</label>
+                                <input type="text" class="form-control" id="txtCustomerCode">
                             </div>
 
 
                             <div class="form-group mb-4">
-                                <label for="customerName">Customer Name:</label>
-                                <input type="text" class="form-control" id="customerName">
+                                <label for="txtCustomerName">Customer Name:</label>
+                                <input type="text" class="form-control" id="txtCustomerName">
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="gender">Gender:</label>
-                                <select class="form-control" id="gender">
-                                    <option>Male</option>
-                                    <option>Female</option>
+                                <label for="txtGender">Gender:</label>
+                                <select class="form-control" id="txtGender">
+                                    <option value="MALE">MALE</option>
+                                    <option value="FEMALE">FEMALE</option>
                                 </select>
                             </div>
 
 
                             <div class="form-group mb-4">
-                                <label for="joinDateLoyaltyCustomer">Join Date Loyalty Customer:</label>
-                                <input type="date" class="form-control" id="joinDateLoyaltyCustomer">
+                                <label for="txtJoinDateLoyaltyCustomer">Join Date Loyalty Customer:</label>
+                                <input type="date" class="form-control" id="txtJoinDateLoyaltyCustomer">
                             </div>
 
 
@@ -114,29 +114,30 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-4 mt-4">
-                                <label for="level">Level:</label>
-                                <select class="form-control" id="level">
-                                    <option>Gold</option>
-                                    <option>Silver</option>
-                                    <option>Bronze</option>
+                                <label for="txtLevel">Level:</label>
+                                <select class="form-control" id="txtLevel">
+                                    <option value="GOLD">GOLD</option>
+                                    <option value="SILVER">SILVER</option>
+                                    <option value="BRONZE">BRONZE</option>
+                                    <option value="NEW">NEW</option>
                                 </select>
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="totalPoints">Total Points:</label>
-                                <input type="text" class="form-control" id="totalPoints">
+                                <label for="txtTotalPoints">Total Points:</label>
+                                <input type="text" class="form-control" id="txtTotalPoints">
                             </div>
 
 
                             <div class="form-group mb-4">
-                                <label for="dateOfBirth">Date of Birth:</label>
-                                <input type="date" class="form-control" id="dateOfBirth">
+                                <label for="txtDateOfBirth">Date of Birth:</label>
+                                <input type="date" class="form-control" id="txtDateOfBirth">
                             </div>
 
 
                             <div class="form-group mb-4">
-                                <label for="address">Address:</label>
-                                <input type="text" class="form-control" id="address">
+                                <label for="txtAddress">Address:</label>
+                                <input type="text" class="form-control" id="txtAddress">
                             </div>
                             <!-- Other form fields -->
 
@@ -148,9 +149,10 @@
                     <div class="row">
                         <div class="col-md-12 mb-4 mt-4 text-left">
 
-                            <button type="submit" class="btn btn-danger">+Save Customer</button>
-                            <button type="button" class="btn btn-warning">Update</button>
-                            <button type="button" class="btn btn-success">Delete</button>
+                            <button type="button" class="btn btn-danger" id="btnSave">+Save Customer</button>
+                            <button type="button" class="btn btn-warning" id="btnUpdate">Update</button>
+                            <button type="button" class="btn btn-success" id="btnDelete">Delete</button>
+                            <button type="button" class="btn btn-secondary" id="btnGetAll">GetAll</button>
 
 
                         </div>
@@ -177,7 +179,7 @@
                 <div class="customerTableDiv overflow-auto" style="height: 270px;">
                     <table class="table table-success table-striped table-bordered table-hover">
                         <thead class="text-light table-dark text-center  table-bordered sticky-top">
-                        <tr>
+                        <tr >
                             <th>Customer Code</th>
                             <th>Customer Name</th>
                             <th>Gender</th>
@@ -199,73 +201,13 @@
 
 
 
-
-
     </div>
 
 </main>
 
 
-<!--<main>-->
-
-
-<!--    <div class="container">-->
-<!--        <h2>Customer Form</h2>-->
-
-<!--        <div style="background-color: gray;" class="row justify-content-center">-->
-<!--            <div class="col-md-6">-->
-
-
-<!--                <form>-->
-<!--                    <div class="form-group mb-4 mt-4">-->
-<!--                        <label for="customerCode">Customer Code:</label>-->
-<!--                        <input type="text" class="form-control" id="customerCode">-->
-<!--                    </div>-->
-<!--                    <div class="form-group mb-4">-->
-<!--                        <label for="customerName">Customer Name:</label>-->
-<!--                        <input type="text" class="form-control" id="customerName">-->
-<!--                    </div>-->
-<!--                    <div class="form-group mb-4">-->
-<!--                        <label for="gender">Gender:</label>-->
-<!--                        <select class="form-control" id="gender">-->
-<!--                            <option>Male</option>-->
-<!--                            <option>Female</option>-->
-<!--                            <option>Other</option>-->
-<!--                        </select>-->
-<!--                    </div>-->
-<!--                    <div class="form-group mb-4">-->
-<!--                        <label for="joinDateLoyaltyCustomer">Join Date Loyalty Customer:</label>-->
-<!--                        <input type="date" class="form-control" id="joinDateLoyaltyCustomer">-->
-<!--                    </div>-->
-<!--                    <div class="form-group mb-4">-->
-<!--                        <label for="level">Level:</label>-->
-<!--                        <select class="form-control" id="level">-->
-<!--                            <option>Gold</option>-->
-<!--                            <option>Silver</option>-->
-<!--                            <option>Bronze</option>-->
-<!--                        </select>-->
-<!--                    </div>-->
-<!--                    <div class="form-group mb-4">-->
-<!--                        <label for="totalPoints">Total Points:</label>-->
-<!--                        <input type="number" class="form-control" id="totalPoints">-->
-<!--                    </div>-->
-<!--                    <div class="form-group mb-4">-->
-<!--                        <label for="dateOfBirth">Date of Birth:</label>-->
-<!--                        <input type="date" class="form-control" id="dateOfBirth">-->
-<!--                    </div>-->
-<!--                    <div class="form-group mb-4">-->
-<!--                        <label for="address">Address:</label>-->
-<!--                        <input type="text" class="form-control" id="address">-->
-<!--                    </div>-->
-<!--                    <button type="submit" class="btn btn-primary">Submit</button>-->
-<!--                </form>-->
-
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-
-
-<!--</main>-->
+<script src="assest/js/jquery-3.6.1.min.js"></script>
+<script src="controller/CustomerController.js"></script>
 
 </body>
 </html>

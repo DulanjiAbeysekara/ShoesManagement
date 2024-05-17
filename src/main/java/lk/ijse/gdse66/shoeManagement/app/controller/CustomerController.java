@@ -53,6 +53,11 @@ public class CustomerController {
     public CustomerDTO getCustomerDetails(@PathVariable("id")String id){
        return customerService.getCustomerDetails(id);
     }
+
+    @GetMapping("/search/{name}")
+    public List<CustomerDTO> searchCustomer(@PathVariable(value = "name")String name){
+        return customerService.searchCustomer(name);
+    }
 }
 
 
