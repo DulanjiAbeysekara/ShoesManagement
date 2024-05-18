@@ -12,7 +12,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
 
 
-
 </head>
 
 
@@ -81,73 +80,75 @@
             <div class="col-md-6">
 
               <div class="form-group mb-4 mt-4">
-                <label for="employeeCode">Employee Code:</label>
-                <input type="text" class="form-control" id="employeeCode">
+                <label for="txtEmployeeCode">Employee Code:</label>
+                <input type="text" class="form-control" id="txtEmployeeCode">
               </div>
 
 
               <div class="form-group mb-4">
-                <label for="employeeName">Employee Name:</label>
-                <input type="text" class="form-control" id="employeeName">
+                <label for="txtEmployeeName">Employee Name:</label>
+                <input type="text" class="form-control" id="txtEmployeeName">
               </div>
 
               <div class="form-group mb-4">
-                <label for="employeeGender">Gender:</label>
-                <select class="form-control" id="employeeGender">
-                  <option>Male</option>
-                  <option>Female</option>
+                <label for="txtEmployeeGender">Gender:</label>
+                <select class="form-control" id="txtEmployeeGender">
+                  <option value="MALE">MALE</option>
+                  <option value="FEMALE">FEMALE</option>
                 </select>
               </div>
 
 
               <div class="form-group mb-4">
-                <label for="employeeStatus">Status:</label>
-                <input type="text" class="form-control" id="employeeStatus">
+                <label for="txtEmployeeStatus">Status:</label>
+                <input type="text" class="form-control" id="txtEmployeeStatus">
               </div>
 
               <div class="form-group mb-4">
-                <label for="employeeDesignation">designation:</label>
-                <input type="date" class="form-control" id="employeeDesignation">
+                <label for="txtEmployeeDesignation">Designation:</label>
+                <input type="text" class="form-control" id="txtEmployeeDesignation">
               </div>
 
               <!-- Other form fields -->
             </div>
             <div class="col-md-6">
               <div class="form-group mb-4 mt-4">
-                <label for="accessRole">Access Role:</label>
-                <select class="form-control" id="accessRole">
-                  <option>ADMIN</option>
-                  <option>USER</option>
+                <label for="txtAccessRole">Access Role:</label>
+                <select class="form-control" id="txtAccessRole">
+                  <option value="ADMIN">ADMIN</option>
+                  <option value="USER">USER</option>
                 </select>
               </div>
 
 
 
               <div class="form-group mb-4">
-                <label for="employeeDateOfBirth">Date of Birth:</label>
-                <input type="date" class="form-control" id="employeeDateOfBirth">
+                <label for="txtEmployeeDateOfBirth">Date of Birth:</label>
+                <input type="date" class="form-control" id="txtEmployeeDateOfBirth">
               </div>
 
 
               <div class="form-group mb-4">
-                <label for="employeeDateOfJoin">Date Of Join:</label>
-                <input type="date" class="form-control" id="employeeDateOfJoin">
+                <label for="txtEmployeeDateOfJoin">Date Of Join:</label>
+                <input type="date" class="form-control" id="txtEmployeeDateOfJoin">
               </div>
 
 
               <div class="form-group mb-4">
-                <label for="attachedBranch">Attached Branch:</label>
-                <input type="text" class="form-control" id="attachedBranch">
+                <label for="txtAttachedBranch">Attached Branch:</label>
+                <input type="text" class="form-control" id="txtAttachedBranch">
               </div>
 
               <div class="form-group mb-4">
-                <label for="attachedBranch">Address:</label>
-                <input type="text" class="form-control" id="address">
+                <label for="txtAddress">Address:</label>
+                <input type="text" class="form-control" id="txtAddress">
               </div>
 
+
+
               <div class="form-group mb-4">
-                <label for="contactNo">Contact No:</label>
-                <input type="text" class="form-control" id="contactNo">
+                <label for="txtContactNo">Contact No:</label>
+                <input type="text" class="form-control" id="txtContactNo">
               </div>
               <!-- Other form fields -->
 
@@ -159,9 +160,10 @@
           <div class="row">
             <div class="col-md-12 mb-4 mt-4 text-left">
 
-              <button type="submit" class="btn btn-danger">+Save Employee</button>
-              <button type="button" class="btn btn-warning">Update</button>
-              <button type="button" class="btn btn-success">Delete</button>
+              <button type="button" class="btn btn-danger" id="employeeSaveBtn">+Save Employee</button>
+              <button type="button" class="btn btn-warning" id="btnEmUpdate">Update</button>
+              <button type="button" class="btn btn-success" id="btnDelete">Delete</button>
+              <button type="button" class="btn btn-secondary" id="btnGetAll">GetAll</button>
 
 
             </div>
@@ -187,7 +189,7 @@
     <div class="row mt-1 mt-md-2 mt-lg-4 justify-content-around" style="height: 320px;">
       <div class="col-11 justify-content-around sectionBorder" style="height: 290px; background: white">
         <div class="customerTableDiv overflow-auto" style="height: 270px;">
-          <table class="table table-success table-striped table-bordered table-hover">
+          <table id="tblEmployee" class="table table-success table-striped table-bordered table-hover">
             <thead class="text-light table-dark text-center  table-bordered sticky-top">
             <tr>
               <th>Employee Code</th>
@@ -224,6 +226,7 @@
 
 <script src="assest/js/jquery-3.6.1.min.js"></script>
 <script src="controller/CustomerController.js"></script>
+<script src="controller/EmployeeController.js"></script>
 
 </body>
 </html>
