@@ -37,6 +37,7 @@ $('#btnSave').click(function () {
     });
 });
 
+
 $('#btnUpdate').click(function (){
     let customerCode = $('#txtCustomerCode').val();
     let customerName = $('#txtCustomerName').val();
@@ -59,9 +60,6 @@ $('#btnUpdate').click(function (){
         address: address
     };
 
-    $('btnDelete').click(function (){
-
-    });
 
     $.ajax({
         url: 'http://localhost:8080/app1/cust/update',
@@ -78,6 +76,26 @@ $('#btnUpdate').click(function (){
         }
     });
 });
+
+
+$('#btnDelete').click(function () {
+    let customerCode = $('#txtCustomerCode').val();
+
+    $.ajax({
+        url: 'http://localhost:8080/app1/cust/' + customerCode,
+        type: 'DELETE',
+        success: function (response) {
+            alert('Customer information deleted successfully!');
+            console.log('Deleted customer with code:', customerCode);
+        },
+        error: function (xhr, status, error) {
+            console.error('Error deleting customer information:', error);
+            alert('Customer Not Found!');
+        }
+    });
+});
+
+
 
 
 $('#btnGetAll').click(function (){
