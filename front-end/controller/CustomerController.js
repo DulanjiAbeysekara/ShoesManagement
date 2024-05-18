@@ -29,12 +29,15 @@ $('#btnSave').click(function () {
         success: function (response) {
             alert('Customer information saved successfully!');
             console.log(customer);
+            getAll();
         },
         error: function (xhr, status, error) {
             console.error('Error saving customer information:', error);
             alert('Customer Not Found!');
         }
     });
+
+
 });
 
 
@@ -69,6 +72,7 @@ $('#btnUpdate').click(function (){
         success: function (response) {
             alert('Customer information updated successfully!');
             console.log(customer);
+            getAll();
         },
         error: function (xhr, status, error) {
             console.error('Error updating customer information:', error);
@@ -87,6 +91,7 @@ $('#btnDelete').click(function () {
         success: function (response) {
             alert('Customer information deleted successfully!');
             console.log('Deleted customer with code:', customerCode);
+            getAll();
         },
         error: function (xhr, status, error) {
             console.error('Error deleting customer information:', error);
@@ -98,20 +103,45 @@ $('#btnDelete').click(function () {
 
 
 
-$('#btnGetAll').click(function (){
-    for (var customer of customerArray) {
-
-        $('#customerTable').empty();
-
-        console.log(customer.customer_code);
-
-
-      let row=  `<tr>  <td>${customer.customer_code}</td> <td>${customer. customer_name}</td>   <td>${customer.customer_gender}</td> <td>${customer. customer_joinDateLoyaltyCustomer}</td>  <td>${customer. customer_level}</td>  <td>${customer.  customer_totalPoints}</td> <td>${customer.customer_dateOfBirth}</td>  <td>${customer.customer_address}</td> </tr>`;
-
-        $('#customerTable').append(row);
-
-
-    }
+$('#btnGetAll').click(function () {
+    getAll();
 
 });
+////////////////////////////////////////////getAllMethod///////////////////////////////////////
 
+function getAll() {
+    $.ajax({
+        url: "http://localhost:8080/app1/cust/getAllCustomers",
+        method: "GET",
+        success: function (resp) {
+            console.log("Success: ", resp);
+            $('#tblCustomers tbody').empty();
+
+            for (const customer of resp) {
+                console.log(customer.customerCode);
+                console.log(customer.customerName);
+                console.log(customer.gender);
+                console.log(customer.joinDateLoyaltyCustomer);
+                console.log(customer.level);
+                console.log(customer.totalPoints);
+                console.log(customer.dateOfBirth);
+                console.log(customer.address);
+
+                let row = `<tr>
+                                <td>${customer.customerCode}</td>
+                                <td>${customer.customerName}</td>
+                                <td>${customer.gender}</td>
+                                <td>${customer.joinDateLoyaltyCustomer}</td>
+                                <td>${customer.level}</td>
+                                <td>${customer.totalPoints}</td>
+                                <td>${customer.dateOfBirth}</td>
+                                <td>${customer.address}</td>
+                            </tr>`;
+                $('#tblCustomers tbody').append(row);
+            }
+        },
+        error: function (error) {
+            console.log("Error: ", error);
+        }
+    });
+}
