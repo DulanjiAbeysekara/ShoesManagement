@@ -44,3 +44,20 @@ $('#employeeSaveBtn').click(function (){
     });
 
 });
+
+$('#btnEmUpdate').click(function (){
+
+    let employeeCode = $('#txtEmployeeCode').val();
+    let employeeName = $('#txtEmployeeName').val();
+    let gender = $('#txtEmployeeGender').find(':selected').val();
+    let status = $('#txtEmployeeStatus').val();
+    let designation = $('#txtEmployeeDesignation').val();
+    // let accessRole = $('#txtAccessRole').find(':selected').val();
+    // let dob = $('#txtEmployeeDateOfBirth').val();
+    // let dateOfJoin = $('#txtEmployeeDateOfJoin').val();
+    let attachedBranch=$('#txtAttachedBranch').val();
+    let address=$('#txtAddress').val();
+    let contactNo=$('#txtContactNo').val();
+
+
+});
