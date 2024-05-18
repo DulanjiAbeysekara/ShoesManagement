@@ -59,5 +59,15 @@ $('#btnEmUpdate').click(function (){
     let address=$('#txtAddress').val();
     let contactNo=$('#txtContactNo').val();
 
+    var employee={
+        employeeCode:employeeCode,
+        employeeName:employeeName,
+        gender:gender,
+        status:status,
+        designation:designation,
+        attachedBranch:attachedBranch,
+        address:address,
+        contactNo:contactNo
+    }
 
 });
