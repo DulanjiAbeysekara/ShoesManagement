@@ -19,7 +19,7 @@ public class InventoryDTO implements Serializable {
     private int size;
     private String supplierCode;
     private String supplierName;
-    private Double unitpricesale;
+    private Double unitPriceSale;
     private Double unitPriceBuy;
     private Double expectedProfit;
     private Double profitMargin;

@@ -79,43 +79,43 @@
             <div class="col-md-6">
 
               <div class="form-group mb-4 mt-4">
-                <label for="itemCode">Item Code:</label>
-                <input type="text" class="form-control" id="itemCode">
+                <label for="txtItemCode">Item Code:</label>
+                <input type="text" class="form-control" id="txtItemCode">
               </div>
 
 
               <div class="form-group mb-4">
-                <label for="itemDesc">Item Desc:</label>
-                <input type="text" class="form-control" id="itemDesc">
+                <label for="txtItemDesc">Item Desc:</label>
+                <input type="text" class="form-control" id="txtItemDesc">
               </div>
 
               <div class="form-group mb-4">
-                <label for="itemPicture">Item Picture:</label>
-                <input type="text" class="form-control" id="itemPicture">
+                <label for="txtItemPicture">Item Picture:</label>
+                <input type="text" class="form-control" id="txtItemPicture">
               </div>
 
               <div class="form-group mb-4 mt-4">
-                <label for="category">Category:</label>
-                <select class="form-control" id="category">
-                  <option>Sports</option>
-                  <option>Hills</option>
-                  <option>Flate</option>
+                <label for="txtCategory">Category:</label>
+                <select class="form-control" id="txtCategory">
+                  <option value="SPORTS">SPORTS</option>
+                  <option value="HILLS">HILLS</option>
+                  <option value="FLATE">FLATE</option>
                 </select>
               </div>
 
               <div class="form-group mb-4">
-                <label for="size">Size:</label>
-                <input type="text" class="form-control" id="size">
+                <label for="txtSize">Size:</label>
+                <input type="text" class="form-control" id="txtSize">
               </div>
 
 
 
               <div class="form-group mb-4 mt-4">
-                <label for="supplierCode1">Supplier Code:</label>
-                <select class="form-control" id="supplierCode1">
-                  <option>Sup001</option>
-                  <option>Sup002</option>
-                  <option>Sup003</option>
+                <label for="txtSupplierCode1">Supplier Code:</label>
+                <select class="form-control" id="txtSupplierCode1">
+                  <option value="SUP001">SUP001</option>
+                  <option value="SUP002">SUP002</option>
+                  <option value="Sup003">Sup003</option>
                 </select>
               </div>
 
@@ -128,38 +128,38 @@
               <div class="col-md-6 mb-4 mt-4 ">
 
               <div class="form-group mb-4">
-                <label for="supplierName2">Supplier Name:</label>
-                <input type="text" class="form-control" id="supplierName2">
+                <label for="txtSupplierName2">Supplier Name:</label>
+                <input type="text" class="form-control" id="txtSupplierName2">
               </div>
 
 
               <div class="form-group mb-4">
-                <label for="unitpricesale">Unit Price Sale:</label>
-                <input type="date" class="form-control" id="unitpricesale">
+                <label for="txtUnitPriceSale">Unit Price Sale:</label>
+                <input type="text" class="form-control" id="txtUnitPriceSale">
               </div>
 
 
               <div class="form-group mb-4">
-                <label for="unitPriceBuy">Unit Price Buy:</label>
-                <input type="text" class="form-control" id="unitPriceBuy">
+                <label for="txtUnitPriceBuy">Unit Price Buy:</label>
+                <input type="text" class="form-control" id="txtUnitPriceBuy">
               </div>
 
               <div class="form-group mb-4">
-                <label for="expectedProfit">Expected Profit:</label>
-                <input type="text" class="form-control" id="expectedProfit">
+                <label for="txtExpectedProfit">Expected Profit:</label>
+                <input type="text" class="form-control" id="txtExpectedProfit">
               </div>
 
               <div class="form-group mb-4">
-                <label for="profitMargin">Profit Margin:</label>
-                <input type="text" class="form-control" id="profitMargin">
+                <label for="txtProfitMargin">Profit Margin:</label>
+                <input type="text" class="form-control" id="txtProfitMargin">
               </div>
 
 
               <div class="form-group mb-4 mt-4">
-                <label for="Inventorystatus">Status:</label>
-                <select class="form-control" id="Inventorystatus">
-                  <option>Good</option>
-                  <option>Bad</option>
+                <label for="txtInventoryStatus">Status:</label>
+                <select class="form-control" id="txtInventoryStatus">
+                  <option value="GOOD">GOOD</option>
+                  <option value="BAD">BAD</option>
                 </select>
               </div>
 
@@ -172,9 +172,9 @@
           <div class="row">
             <div class="col-md-12 mb-4 mt-4 text-left">
 
-              <button type="submit" class="btn btn-danger">+Save Sale</button>
-              <button type="button" class="btn btn-warning">Update</button>
-              <button type="button" class="btn btn-success">Delete</button>
+              <button type="button" class="btn btn-danger" id="btnItemSave">+Save Item</button>
+              <button type="button" class="btn btn-warning" id="btnItemUpdate">Update</button>
+              <button type="button" class="btn btn-success" id="btnItemDlt">Delete</button>
 
 
             </div>
@@ -186,7 +186,7 @@
           <div class="row">
             <div class="col-md-5 mb-4 mt-4 text-left">
               <input text="text" placeholder="Item Code" class="form-control" id="serachCust">
-              <button class="btn btn-primary mb-2 mt-2" type="submit">Search</button>
+              <button class="btn btn-primary mb-2 mt-2" type="button">Search</button>
             </div>
           </div>
         </form>
@@ -238,6 +238,8 @@
 <script src="assest/js/jquery-3.6.1.min.js"></script>
 <script src="controller/CustomerController.js"></script>
 <script src="controller/EmployeeController.js"></script>
+<script src="controller/InventoryController.js"></script>
+
 
 
 </body>
