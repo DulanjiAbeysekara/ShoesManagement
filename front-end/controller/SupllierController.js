@@ -74,4 +74,22 @@ $('#btnSupUpdate').click(function (){
 });
 
 
-$('#btnSupDlt')
+$('#btnSupDlt').click(function (){
+
+    let code=$('#txtSupplierCode').val();
+
+    $.ajax({
+        url: 'http://localhost:8080/app1/supplier/' + code,
+        type: 'DELETE',
+        success: function (response) {
+            alert('Supplier information deleted successfully!');
+            console.log('Deleted supplier with code:', code);
+            getAll();
+        },
+        error: function (xhr, status, error) {
+            console.error('Error deleting Supplier information:', error);
+            alert('Customer Not Found!');
+        }
+    });
+
+});

@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Shoe Management</title>
-  <link rel="stylesheet" href="assest/bootstrap-5.3.2-dist/css/bootstrap.css">
-  <script src="assest/bootstrap-5.3.2-dist/js/bootstrap.bundle.js"></script>
-  <link rel="stylesheet" href="assest/new.css">
+  <link rel="stylesheet" href="../assest/bootstrap-5.3.2-dist/css/bootstrap.css">
+  <script src="../assest/bootstrap-5.3.2-dist/js/bootstrap.bundle.js"></script>
+  <link rel="stylesheet" href="../assest/new.css">
   <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
 
 
-
 </head>
+
+
 <body style="background:#9D4DFF;">
+
 
 <header>
   <nav class="navbar navbar-expand-lg fixed-top" style="background-image: linear-gradient(to left, #6B3278 10%, #9D4DFF); ">
@@ -63,15 +65,14 @@
   </nav>
 </header>
 
-
-<!-----------------------------------------------inventory------------------------------->
+<!----------------------------------------employee---------------------------------->
 
 <main>
   <div class="container">
-    <h2 style="font-family: Abril Fatface;">Inventory Form</h2>
+    <h2 style="font-family: Abril Fatface;">Employee Form</h2>
     <div  style="background-color: gray;" class="row justify-content-center">
 
-      <h3 style="font-family: Abril Fatface; color: white;">Inventory</h3>
+      <h3 style="font-family: Abril Fatface; color: white;">Employee</h3>
       <div  class="col-md-8">
         <form>
 
@@ -79,142 +80,130 @@
             <div class="col-md-6">
 
               <div class="form-group mb-4 mt-4">
-                <label for="txtItemCode">Item Code:</label>
-                <input type="text" class="form-control" id="txtItemCode">
+                <label for="txtEmployeeCode">Employee Code:</label>
+                <input type="text" class="form-control" id="txtEmployeeCode">
               </div>
 
 
               <div class="form-group mb-4">
-                <label for="txtItemDesc">Item Desc:</label>
-                <input type="text" class="form-control" id="txtItemDesc">
+                <label for="txtEmployeeName">Employee Name:</label>
+                <input type="text" class="form-control" id="txtEmployeeName">
               </div>
 
               <div class="form-group mb-4">
-                <label for="txtItemPicture">Item Picture:</label>
-                <input type="text" class="form-control" id="txtItemPicture">
-              </div>
-
-              <div class="form-group mb-4 mt-4">
-                <label for="txtCategory">Category:</label>
-                <select class="form-control" id="txtCategory">
-                  <option value="SPORTS">SPORTS</option>
-                  <option value="HILLS">HILLS</option>
-                  <option value="FLATE">FLATE</option>
-                </select>
-              </div>
-
-              <div class="form-group mb-4">
-                <label for="txtSize">Size:</label>
-                <input type="text" class="form-control" id="txtSize">
-              </div>
-
-
-
-              <div class="form-group mb-4 mt-4">
-                <label for="txtSupplierCode1">Supplier Code:</label>
-                <select class="form-control" id="txtSupplierCode1">
-                  <option value="SUP001">SUP001</option>
-                  <option value="SUP002">SUP002</option>
-                  <option value="Sup003">Sup003</option>
+                <label for="txtEmployeeGender">Gender:</label>
+                <select class="form-control" id="txtEmployeeGender">
+                  <option value="MALE">MALE</option>
+                  <option value="FEMALE">FEMALE</option>
                 </select>
               </div>
 
 
-            </div>
+              <div class="form-group mb-4">
+                <label for="txtEmployeeStatus">Status:</label>
+                <input type="text" class="form-control" id="txtEmployeeStatus">
+              </div>
 
+              <div class="form-group mb-4">
+                <label for="txtEmployeeDesignation">Designation:</label>
+                <input type="text" class="form-control" id="txtEmployeeDesignation">
+              </div>
 
               <!-- Other form fields -->
-
-              <div class="col-md-6 mb-4 mt-4 ">
-
-              <div class="form-group mb-4">
-                <label for="txtSupplierName2">Supplier Name:</label>
-                <input type="text" class="form-control" id="txtSupplierName2">
-              </div>
-
-
-              <div class="form-group mb-4">
-                <label for="txtUnitPriceSale">Unit Price Sale:</label>
-                <input type="text" class="form-control" id="txtUnitPriceSale">
-              </div>
-
-
-              <div class="form-group mb-4">
-                <label for="txtUnitPriceBuy">Unit Price Buy:</label>
-                <input type="text" class="form-control" id="txtUnitPriceBuy">
-              </div>
-
-              <div class="form-group mb-4">
-                <label for="txtExpectedProfit">Expected Profit:</label>
-                <input type="text" class="form-control" id="txtExpectedProfit">
-              </div>
-
-              <div class="form-group mb-4">
-                <label for="txtProfitMargin">Profit Margin:</label>
-                <input type="text" class="form-control" id="txtProfitMargin">
-              </div>
-
-
+            </div>
+            <div class="col-md-6">
               <div class="form-group mb-4 mt-4">
-                <label for="txtInventoryStatus">Status:</label>
-                <select class="form-control" id="txtInventoryStatus">
-                  <option value="GOOD">GOOD</option>
-                  <option value="BAD">BAD</option>
+                <label for="txtAccessRole">Access Role:</label>
+                <select class="form-control" id="txtAccessRole">
+                  <option value="ADMIN">ADMIN</option>
+                  <option value="USER">USER</option>
                 </select>
               </div>
 
 
 
-            </div>
+              <div class="form-group mb-4">
+                <label for="txtEmployeeDateOfBirth">Date of Birth:</label>
+                <input type="date" class="form-control" id="txtEmployeeDateOfBirth">
+              </div>
 
+
+              <div class="form-group mb-4">
+                <label for="txtEmployeeDateOfJoin">Date Of Join:</label>
+                <input type="date" class="form-control" id="txtEmployeeDateOfJoin">
+              </div>
+
+
+              <div class="form-group mb-4">
+                <label for="txtAttachedBranch">Attached Branch:</label>
+                <input type="text" class="form-control" id="txtAttachedBranch">
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="txtAddress">Address:</label>
+                <input type="text" class="form-control" id="txtAddress">
+              </div>
+
+
+
+              <div class="form-group mb-4">
+                <label for="txtContactNo">Contact No:</label>
+                <input type="text" class="form-control" id="txtContactNo">
+              </div>
+              <!-- Other form fields -->
+
+
+            </div>
           </div>
+
 
           <div class="row">
             <div class="col-md-12 mb-4 mt-4 text-left">
 
-              <button type="button" class="btn btn-danger" id="btnItemSave">+Save Item</button>
-              <button type="button" class="btn btn-warning" id="btnItemUpdate">Update</button>
-              <button type="button" class="btn btn-success" id="btnItemDlt">Delete</button>
+              <button type="button" class="btn btn-danger" id="employeeSaveBtn">+Save Employee</button>
+              <button type="button" class="btn btn-warning" id="btnEmUpdate">Update</button>
+              <button type="button" class="btn btn-success" id="btnEmDelete">Delete</button>
+              <button type="button" class="btn btn-secondary" id="btnGetAll">GetAll</button>
 
 
             </div>
 
 
           </div>
-
 
           <div class="row">
             <div class="col-md-5 mb-4 mt-4 text-left">
-              <input text="text" placeholder="Item Code" class="form-control" id="serachCust">
-              <button class="btn btn-primary mb-2 mt-2" type="button">Search</button>
+              <input text="text" placeholder="Customer Code/Contact No" class="form-control" id="serachCust">
+              <button class="btn btn-primary mb-2 mt-2" type="submit">Search</button>
             </div>
           </div>
+
         </form>
       </div>
     </div>
 
 
 
-    <!---------------------------------------Inventory Table------------------------------------>
+    <!----------------------------------------Employee Table------------------------------------>
 
     <div class="row mt-1 mt-md-2 mt-lg-4 justify-content-around" style="height: 320px;">
       <div class="col-11 justify-content-around sectionBorder" style="height: 290px; background: white">
         <div class="customerTableDiv overflow-auto" style="height: 270px;">
-          <table class="table table-success table-striped table-bordered table-hover">
+          <table id="tblEmployee" class="table table-success table-striped table-bordered table-hover">
             <thead class="text-light table-dark text-center  table-bordered sticky-top">
             <tr>
-              <th>Item  Code</th>
-              <th>Item Desc</th>
-              <th>Item Picture</th>
-              <th>Category</th>
-              <th>Size</th>
-              <th>Supplier Code</th>
-              <th>Supplier Name</th>
-              <th>Unit Price Sale</th>
-              <th>Unit Price Buy</th>
-              <th>Expected Profit</th>
-              <th>Profit Margin</th>
+              <th>Employee Code</th>
+              <th>Employee Name</th>
+              <th>Gender</th>
               <th>Status</th>
+              <th>Level</th>
+              <th>Designation</th>
+              <th>Date of Birth</th>
+              <th>Date Of Join</th>
+              <th>Attached Branch</th>
+              <th>Address</th>
+              <th>Contact No</th>
+              >
             </tr>
             </thead>
             <tbody id="customerTable"></tbody>
@@ -235,14 +224,11 @@
 </main>
 
 
-<script src="assest/js/jquery-3.6.1.min.js"></script>
-<script src="controller/CustomerController.js"></script>
-<script src="controller/EmployeeController.js"></script>
-<script src="controller/InventoryController.js"></script>
-<script src="controller/SupllierController.js"></script>
-
-
-
+<script src="../assest/js/jquery-3.6.1.min.js"></script>
+<script src="../controller/CustomerController.js"></script>
+<script src="../controller/EmployeeController.js"></script>
+<script src="../controller/InventoryController.js"></script>
+<script src="../controller/SupllierController.js"></script>
 
 </body>
 </html>

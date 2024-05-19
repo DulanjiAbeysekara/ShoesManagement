@@ -93,3 +93,30 @@ main {
     background-color: grey;
 }
 
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+.login-container {
+    max-width: 400px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+.form-title {
+    margin-bottom: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+.form-control {
+    margin-bottom: 15px;
+}
+.login-btn {
+    width: 100%;
+    padding: 10px;
+}
