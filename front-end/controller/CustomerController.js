@@ -107,43 +107,6 @@ $('#btnDelete').click(function () {
 
 ////////////////////////////////////////////getAllMethod///////////////////////////////////////
 
-// getAllCustomers();
-//
-// function getAllCustomers() {
-//     $.ajax({
-//         url: "http://localhost:8080/app1/cust/getAllCustomers",
-//         method: "GET",
-//         dataType: "json",
-//         success: function (response) {
-//             console.log(response);
-//             console.log(response.length);
-//             loadCustomerDataInTable(response);
-//
-//         },
-//         error: function (xhr, status, err) {
-//             console.log(err)
-//         }
-//     })
-// }
-//
-//
-// function loadCustomerDataInTable(customers) {
-//     var tableBody = document.getElementById("tblCustomers");
-//     tableBody.innerHTML = "";
-//
-//     customers.forEach(function(customer) {
-//         var row = document.createElement("tr");
-//
-//         ["customerCode", "customerName", "gender", "joinDateLoyaltyCustomer", "level", "totalPoints", "dateOfBirth", "address"].forEach(function(property) {
-//             var cell = document.createElement("td");
-//             cell.textContent = customer[property];
-//             row.appendChild(cell);
-//         });
-//
-//         tableBody.appendChild(row);
-//     });
-// }
-
 function getAll() {
     $('#tblCustomers tbody').empty();
 

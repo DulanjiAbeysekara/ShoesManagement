@@ -1,3 +1,5 @@
+getAll();
+
 $('#employeeSaveBtn').click(function (){
 
     let employeeCode = $('#txtEmployeeCode').val();
@@ -116,29 +118,61 @@ $('#btnEmDelete').click(function (){
 
 ////////////////////////////////getAll////////////////////////////////////
 function getAll() {
-    $('#tblCustomers tbody').empty();
+    $('#tblEmployee tbody').empty();
 
     $.ajax({
-        url: "http://localhost:8080/app1/cust/getAllCustomers",
+        url: "http://localhost:8080/app1/employee/getAllEmployee",
         method: "GET",
         success: function (resp) {
-            for (const customer of resp) {
+            for (const employee of resp) {
                 let row = `<tr>
-                                <td>${customer.customerCode}</td>
-                                <td>${customer.customerName}</td>
-                                <td>${customer.gender}</td>
-                                <td>${customer.joinDateLoyaltyCustomer}</td>
-                                <td>${customer.level}</td>
-                                <td>${customer.totalPoints}</td>
-                                <td>${customer.dateOfBirth}</td>
-                                <td>${customer.address}</td>
+                                <td>${employee.employeeCode}</td>
+                                <td>${employee.employeeName}</td>
+                                <td>${employee.gender}</td>
+                                <td>${employee.status}</td>
+                                <td>${employee.designation}</td>
+                                <td>${employee.accessRole}</td>
+                                <td>${employee.dob}</td>
+                                <td>${employee.dateOfJoin}</td>
+                                <td>${employee.attachedBranch}</td>
+                                <td>${employee.address}</td>
+                                <td>${employee.contactNo}</td>
+                           
                             </tr>`;
-                $('#tblCustomers tbody').append(row);
+                $('#tblEmployee tbody').append(row);
             }
             bindClickEvents();
         },
         error: function (error) {
             console.log("Error: ", error);
         }
+    });
+}
+
+function bindClickEvents() {
+    $('#tblEmployee tbody>tr').click(function () {
+        let employeeCode = $(this).children(':nth-child(1)').text();
+        let employeeName = $(this).children(':nth-child(2)').text();
+        let gender = $(this).children(':nth-child(3)').text();
+        let status = $(this).children(':nth-child(4)').text();
+        let designation = $(this).children(':nth-child(5)').text();
+        let dob = $(this).children(':nth-child(6)').text();
+        let dateOfJoin = $(this).children(':nth-child(7)').text();
+        let accessRole = $(this).children(':nth-child(8)').text();
+        let attachedBranch = $(this).children(':nth-child(9)').text();
+        let address = $(this).children(':nth-child(10)').text();
+        let contactNo = $(this).children(':nth-child(11)').text();
+
+        $('#txtEmployeeCode').val(employeeCode);
+        $('#txtEmployeeName').val(employeeName);
+        $('#txtEmployeeGender').val(gender);
+        $('#txtEmployeeStatus').val(status);
+        $('#txtEmployeeDesignation').val(designation);
+        $('#txtEmployeeDateOfBirth').val(dob);
+        $('#txtEmployeeDateOfJoin').val(dateOfJoin);
+        $('#txtAccessRole').val(accessRole);
+        $('#txtAttachedBranch').val(attachedBranch);
+        $('#txtAddress').val(address);
+        $('#txtContactNo').val(contactNo);
     });
 }
