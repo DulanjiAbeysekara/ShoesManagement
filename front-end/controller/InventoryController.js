@@ -1,7 +1,9 @@
+getAll();
+
 $('#btnItemSave').click(function (){
 
     let itemCode=$('#txtItemCode').val();
-    let  itemDesc=$('#txtItemDesc').val();
+    let itemDesc=$('#txtItemDesc').val();
     let itemPicture=$('#txtItemPicture').val();
     let category=$('#txtCategory').val();
     let size=$('#txtSize').val();
@@ -113,3 +115,69 @@ $("#btnItemDlt").click(function (){
     });
 
 });
+
+
+//////////////////////////////////getAll///////////////////////////////////////////////
+function getAll() {
+    $('#tblItem tbody').empty();
+
+    $.ajax({
+        url: "http://localhost:8080/app1/inventory/getAllInventory",
+        method: "GET",
+        success: function (resp) {
+            for (const item of resp) {
+                let row = `<tr>
+                                <td>${item.itemCode}</td>
+                                <td>${item.itemDesc}</td>
+                                <td>${item.itemPicture}</td>
+                                <td>${item.category}</td>
+                                <td>${item.size}</td>
+                                <td>${item.supplierCode}</td>
+                                <td>${item.supplierName}</td>
+                                <td>${item.unitPriceSale}</td>
+                                <td>${item.unitPriceBuy}</td>
+                                <td>${item.expectedProfit}</td>
+                                <td>${item.profitMargin}</td>
+                                <td>${item.status}</td>
+                            </tr>`;
+                $('#tblItem tbody').append(row);
+            }
+            bindClickEvents();
+        },
+        error: function (error) {
+            console.log("Error: ", error);
+        }
+    });
+}
+
+function bindClickEvents() {
+    $('#tblItem tbody>tr').click(function () {
+        let itemCode = $(this).children(':nth-child(1)').text();
+        let itemDesc = $(this).children(':nth-child(2)').text();
+        let itemPicture = $(this).children(':nth-child(3)').text();
+        let category = $(this).children(':nth-child(4)').text();
+        let size = $(this).children(':nth-child(5)').text();
+        let supplierCode = $(this).children(':nth-child(6)').text();
+        let supplierName = $(this).children(':nth-child(7)').text();
+        let unitPriceSale = $(this).children(':nth-child(8)').text();
+        let unitPriceBuy = $(this).children(':nth-child(9)').text();
+        let expectedProfit = $(this).children(':nth-child(10)').text();
+        let profitMargin = $(this).children(':nth-child(11)').text();
+        let status = $(this).children(':nth-child(12)').text();
+
+        $('#txtItemCode').val(itemCode);
+        $('#txtItemDesc').val(itemDesc);
+        $('#txtItemPicture').val(itemPicture);
+        $('#txtCategory').val(category);
+        $('#txtSize').val(size);
+        $('#txtSupplierCode1').val(supplierCode);
+        $('#txtSupplierName2').val(supplierName);
+        $('#txtUnitPriceSale').val(unitPriceSale);
+        $('#txtUnitPriceBuy').val(unitPriceBuy);
+        $('#txtExpectedProfit').val(expectedProfit);
+        $('#txtProfitMargin').val(profitMargin);
+        $('#txtInventoryStatus').val(status);
+    });
+}
+
+
