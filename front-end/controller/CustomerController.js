@@ -1,4 +1,7 @@
 
+
+getAll();
+
 $('#btnSave').click(function () {
 
     let customerCode = $('#txtCustomerCode').val();
@@ -102,31 +105,53 @@ $('#btnDelete').click(function () {
 
 
 
-
-$('#btnGetAll').click(function () {
-    getAll();
-
-});
 ////////////////////////////////////////////getAllMethod///////////////////////////////////////
 
+// getAllCustomers();
+//
+// function getAllCustomers() {
+//     $.ajax({
+//         url: "http://localhost:8080/app1/cust/getAllCustomers",
+//         method: "GET",
+//         dataType: "json",
+//         success: function (response) {
+//             console.log(response);
+//             console.log(response.length);
+//             loadCustomerDataInTable(response);
+//
+//         },
+//         error: function (xhr, status, err) {
+//             console.log(err)
+//         }
+//     })
+// }
+//
+//
+// function loadCustomerDataInTable(customers) {
+//     var tableBody = document.getElementById("tblCustomers");
+//     tableBody.innerHTML = "";
+//
+//     customers.forEach(function(customer) {
+//         var row = document.createElement("tr");
+//
+//         ["customerCode", "customerName", "gender", "joinDateLoyaltyCustomer", "level", "totalPoints", "dateOfBirth", "address"].forEach(function(property) {
+//             var cell = document.createElement("td");
+//             cell.textContent = customer[property];
+//             row.appendChild(cell);
+//         });
+//
+//         tableBody.appendChild(row);
+//     });
+// }
+
 function getAll() {
+    $('#tblCustomers tbody').empty();
+
     $.ajax({
         url: "http://localhost:8080/app1/cust/getAllCustomers",
         method: "GET",
         success: function (resp) {
-            console.log("Success: ", resp);
-            $('#tblCustomers tbody').empty();
-
             for (const customer of resp) {
-                console.log(customer.customerCode);
-                console.log(customer.customerName);
-                console.log(customer.gender);
-                console.log(customer.joinDateLoyaltyCustomer);
-                console.log(customer.level);
-                console.log(customer.totalPoints);
-                console.log(customer.dateOfBirth);
-                console.log(customer.address);
-
                 let row = `<tr>
                                 <td>${customer.customerCode}</td>
                                 <td>${customer.customerName}</td>
@@ -139,9 +164,32 @@ function getAll() {
                             </tr>`;
                 $('#tblCustomers tbody').append(row);
             }
+            bindClickEvents();
         },
         error: function (error) {
             console.log("Error: ", error);
         }
+    });
+}
+
+function bindClickEvents() {
+    $('#tblCustomers tbody>tr').click(function () {
+        let customerCode = $(this).children(':nth-child(1)').text();
+        let customerName = $(this).children(':nth-child(2)').text();
+        let gender = $(this).children(':nth-child(3)').text();
+        let joinDateLoyaltyCustomer = $(this).children(':nth-child(4)').text();
+        let level = $(this).children(':nth-child(5)').text();
+        let totalPoints = $(this).children(':nth-child(6)').text();
+        let dateOfBirth = $(this).children(':nth-child(7)').text();
+        let address = $(this).children(':nth-child(8)').text();
+
+        $('#txtCustomerCode').val(customerCode);
+        $('#txtCustomerName').val(customerName);
+        $('#txtGender').val(gender);
+        $('#txtJoinDateLoyaltyCustomer').val(joinDateLoyaltyCustomer);
+        $('#txtLevel').val(level);
+        $('#txtTotalPoints').val(totalPoints);
+        $('#txtDateOfBirth').val(dateOfBirth);
+        $('#txtAddress').val(address);
     });
 }

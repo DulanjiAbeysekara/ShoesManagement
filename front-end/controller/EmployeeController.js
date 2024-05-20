@@ -110,3 +110,35 @@ $('#btnEmDelete').click(function (){
         }
     });
 });
+
+
+
+
+////////////////////////////////getAll////////////////////////////////////
+function getAll() {
+    $('#tblCustomers tbody').empty();
+
+    $.ajax({
+        url: "http://localhost:8080/app1/cust/getAllCustomers",
+        method: "GET",
+        success: function (resp) {
+            for (const customer of resp) {
+                let row = `<tr>
+                                <td>${customer.customerCode}</td>
+                                <td>${customer.customerName}</td>
+                                <td>${customer.gender}</td>
+                                <td>${customer.joinDateLoyaltyCustomer}</td>
+                                <td>${customer.level}</td>
+                                <td>${customer.totalPoints}</td>
+                                <td>${customer.dateOfBirth}</td>
+                                <td>${customer.address}</td>
+                            </tr>`;
+                $('#tblCustomers tbody').append(row);
+            }
+            bindClickEvents();
+        },
+        error: function (error) {
+            console.log("Error: ", error);
+        }
+    });
+}
