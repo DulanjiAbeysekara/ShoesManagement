@@ -1,3 +1,5 @@
+getAll();
+
 $('#btnSupSave').click(function (){
     let code=$('#txtSupplierCode').val();
     let name=$('#txtSupplierName').val();
@@ -93,3 +95,56 @@ $('#btnSupDlt').click(function (){
     });
 
 });
+
+
+//////////////////////////getAll//////////////////////////////////////////
+
+function getAll() {
+    $('#tblSupplier tbody').empty();
+
+    $.ajax({
+        url: "http://localhost:8080/app1/supplier/getAllSupplier",
+        method: "GET",
+        success: function (resp) {
+            for (const supplier of resp) {
+                let row = `<tr>
+                                <td>${supplier.code}</td>
+                                <td>${supplier.name}</td>
+                                <td>${supplier.category}</td>
+                                <td>${supplier.address}</td>
+                                <td>${supplier.contactNo1}</td>
+                                <td>${supplier.contactNo2}</td>
+                                <td>${supplier.email}</td>
+                                
+                            </tr>`;
+                $('#tblSupplier tbody').append(row);
+            }
+            bindClickEvents();
+        },
+        error: function (error) {
+            console.log("Error: ", error);
+        }
+    });
+}
+
+function bindClickEvents() {
+    $('#tblSupplier tbody>tr').click(function () {
+        let code = $(this).children(':nth-child(1)').text();
+        let name = $(this).children(':nth-child(2)').text();
+        let category = $(this).children(':nth-child(3)').text();
+        let address = $(this).children(':nth-child(4)').text();
+        let contactNo1 = $(this).children(':nth-child(5)').text();
+        let contactNo2 = $(this).children(':nth-child(6)').text();
+        let email = $(this).children(':nth-child(7)').text();
+
+
+        $('#txtSupplierCode').val(code);
+        $('#txtSupplierName').val(name);
+        $('#txtCategory').val(category);
+        $('#txtSupplierAddress').val(address);
+        $('#txtContactNo1').val(contactNo1);
+        $('#txtContactNo2').val(contactNo2);
+        $('#txtEmail').val(email);
+
+    });
+}
