@@ -1,6 +1,8 @@
 package lk.ijse.gdse66.shoeManagement.app.service;
 
+import lk.ijse.gdse66.shoeManagement.app.dto.CustomDTO;
 import lk.ijse.gdse66.shoeManagement.app.dto.CustomerDTO;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -15,6 +17,9 @@ public interface CustomerService {
 
     boolean deleteCustomer(String id);
 
-    List<CustomerDTO> searchCustomer(String customerName);
+    List<CustomerDTO> searchCustomer(String customer_code);
+
+    @ResponseBody
+    CustomDTO customerIdGenerate();
 }
 

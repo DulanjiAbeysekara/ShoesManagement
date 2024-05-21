@@ -1,5 +1,6 @@
 package lk.ijse.gdse66.shoeManagement.app.service.impl;
 
+import lk.ijse.gdse66.shoeManagement.app.dto.CustomDTO;
 import lk.ijse.gdse66.shoeManagement.app.dto.CustomerDTO;
 import lk.ijse.gdse66.shoeManagement.app.entity.CustomerEntity;
 import lk.ijse.gdse66.shoeManagement.app.repository.CustomerRepo;
@@ -79,14 +80,19 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<CustomerDTO> searchCustomer(String customerName) {
-        List<CustomerEntity> foundCustomer = customerRepo.findByCustomerNameStartingWith(customerName);
+    public List<CustomerDTO> searchCustomer(String customer_code) {
+        List<CustomerEntity> foundCustomer = customerRepo.findByCustomerNameStartingWith(customer_code);
 
         if (foundCustomer.isEmpty()) {
-            throw new NotFoundException("No customers found with the name: " + customerName);
+            throw new NotFoundException("No customers found with the name: " + customer_code);
         }
         return foundCustomer.stream()
                 .map(customer -> mapper.map(customer, CustomerDTO.class))
                 .toList();
     }
+
+    @Override
+    public CustomDTO customerIdGenerate() {
+        return new CustomDTO(customerRepo.getLastIndex());
+        }
 }

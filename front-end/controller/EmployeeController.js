@@ -115,6 +115,21 @@ $('#btnEmDelete').click(function (){
 
 
 
+$('#txtEmployeePicture').change(function() {
+    var fileInput = $('#txtEmployeePicture')[0];
+    var file = fileInput.files[0];
+
+    if (file && (file.type.includes('image') || file.type === 'image/gif')) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#img').attr('src', e.target.result);
+        };
+        reader.readAsDataURL(file);
+        $(this).val("");
+    } else {
+        // Handle error scenario
+    }
+});
 
 ////////////////////////////////getAll////////////////////////////////////
 function getAll() {
@@ -176,3 +191,5 @@ function bindClickEvents() {
         $('#txtContactNo').val(contactNo);
     });
 }
+
+

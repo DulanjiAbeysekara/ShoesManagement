@@ -17,7 +17,9 @@ public class EmployeeEntity {
     private String employeeCode;
 
     private String employeeName;
-//    private String EmployeeProfilePic;
+
+    @Column(columnDefinition = "LONGTEXT")
+    private String EmployeeProfilePic;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;

@@ -1,11 +1,13 @@
 package lk.ijse.gdse66.shoeManagement.app.controller;
 
 
+import lk.ijse.gdse66.shoeManagement.app.dto.CustomDTO;
 import lk.ijse.gdse66.shoeManagement.app.dto.CustomerDTO;
 import lk.ijse.gdse66.shoeManagement.app.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -54,9 +56,23 @@ public class CustomerController {
        return customerService.getCustomerDetails(id);
     }
 
-    @GetMapping("/search/{name}")
-    public List<CustomerDTO> searchCustomer(@PathVariable(value = "name")String name){
-        return customerService.searchCustomer(name);
+//    @GetMapping("/search")
+//    public List<CustomerDTO> searchCustomer(@RequestParam String customer_code){
+//        return customerService.searchCustomer(customer_code);
+//    }
+
+
+    @GetMapping("/search")
+    public ResponseEntity<List<CustomerDTO>> searchCustomer(@RequestParam String customer_code) {
+        List<CustomerDTO> customerList = customerService.searchCustomer(customer_code);
+        return ResponseEntity.ok().body(customerList);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping(path = "/cusIdGenerate")
+    public @ResponseBody
+    CustomDTO customerIdGenerate() {
+        return customerService.customerIdGenerate();
     }
 }
 

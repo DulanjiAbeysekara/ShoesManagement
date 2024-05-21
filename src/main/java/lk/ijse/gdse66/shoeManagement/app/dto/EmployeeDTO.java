@@ -18,7 +18,7 @@ import java.util.Date;
 public class EmployeeDTO implements Serializable {
     private String employeeCode;
     private String employeeName;
-//    private String EmployeeProfilePic;
+    private String EmployeeProfilePic;
     private Gender gender;
     private String status;
     private String designation;
