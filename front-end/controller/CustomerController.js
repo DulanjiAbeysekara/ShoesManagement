@@ -277,31 +277,31 @@ $(document).ready(function () {
     //     }
     // });
 
-    $('#serachCust').keypress(function(event) {
-        if (event.keyCode === 13) {
-            let customerCode = $('#serachCust').val().trim();
+    // $('#serachCust').keypress(function(event) {
+    //     if (event.keyCode === 13) {
+    //         let customerCode = $('#serachCust').val().trim();
+    //
+    //         $.ajax({
+    //             url: 'http://localhost:8080/app1/cust/search?customer_code=' + customerCode,
+    //             type: 'GET',
+    //             success: function (customerList) {
+    //                 if (customerList && customerList.length > 0) {
+    //                     let customer = customerList[0]; // Assuming only one customer is returned
+    //                     setCustomerDataToForm(customer);
+    //                 } else {
+    //                     alert('Customer not found!');
+    //                 }
+    //             },
+    //             error: function (xhr, status, error) {
+    //                 console.error('Error fetching customer information:', error);
+    //                 alert('Error fetching customer information!');
+    //             }
+    //         });
+    //     }
+    // });
+    //
 
-            $.ajax({
-                url: 'http://localhost:8080/app1/cust/search?customer_code=' + customerCode,
-                type: 'GET',
-                success: function (customerList) {
-                    if (customerList && customerList.length > 0) {
-                        let customer = customerList[0]; // Assuming only one customer is returned
-                        setCustomerDataToForm(customer);
-                    } else {
-                        alert('Customer not found!');
-                    }
-                },
-                error: function (xhr, status, error) {
-                    console.error('Error fetching customer information:', error);
-                    alert('Error fetching customer information!');
-                }
-            });
-        }
-    });
-
-
-
+//////////////////////////////////Methods///////////////////////////////////////////
     function getAll() {
         $('#tblCustomers tbody').empty();
 
@@ -361,6 +361,7 @@ $(document).ready(function () {
         $("#txtTotalPoints").val("");
         $("#txtDateOfBirth").val("");
         $("#txtAddress").val("");
+
         $("#txtCustomerCode").focus();
     }
 
