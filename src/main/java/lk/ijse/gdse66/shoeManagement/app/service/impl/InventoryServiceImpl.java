@@ -1,5 +1,6 @@
 package lk.ijse.gdse66.shoeManagement.app.service.impl;
 
+import lk.ijse.gdse66.shoeManagement.app.dto.CustomDTO;
 import lk.ijse.gdse66.shoeManagement.app.dto.CustomerDTO;
 import lk.ijse.gdse66.shoeManagement.app.dto.InventoryDTO;
 import lk.ijse.gdse66.shoeManagement.app.entity.InventoryEntity;
@@ -66,5 +67,11 @@ public class InventoryServiceImpl implements InventoryService {
         }
         inventoryRepo.deleteById(id);
         return true;
+    }
+
+    @Override
+    public CustomDTO inventoryIdGenerate() {
+        return new CustomDTO(inventoryRepo.getLastIndex());
+
     }
 }
