@@ -1,10 +1,12 @@
 package lk.ijse.gdse66.shoeManagement.app.controller;
 
+import lk.ijse.gdse66.shoeManagement.app.dto.CustomDTO;
 import lk.ijse.gdse66.shoeManagement.app.dto.CustomerDTO;
 import lk.ijse.gdse66.shoeManagement.app.dto.EmployeeDTO;
 import lk.ijse.gdse66.shoeManagement.app.dto.SupplierDTO;
 import lk.ijse.gdse66.shoeManagement.app.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,6 +53,13 @@ public class EmployeeController {
     @GetMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public EmployeeDTO getEmployeeDetails(@PathVariable("id")String id){
         return employeeService.getEmployeeDetails(id);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping(path = "/employeeGenerate")
+    public @ResponseBody
+    CustomDTO employeeIdGenerate() {
+        return employeeService.employeeIdGenerate();
     }
 
 }

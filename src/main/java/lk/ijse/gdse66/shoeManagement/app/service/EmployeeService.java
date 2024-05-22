@@ -20,7 +20,7 @@ public interface EmployeeService {
 
 
     @ResponseBody
-    CustomDTO customerIdGenerate();
+    CustomDTO employeeIdGenerate();
 
 
 //    String generateNextId();

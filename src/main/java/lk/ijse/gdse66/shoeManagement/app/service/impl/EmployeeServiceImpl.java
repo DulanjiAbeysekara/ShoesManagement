@@ -80,7 +80,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public CustomDTO customerIdGenerate() {
+    public CustomDTO employeeIdGenerate() {
         return new CustomDTO(employeeRepo.getLastIndex());
     }
 }
