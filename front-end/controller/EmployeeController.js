@@ -1,5 +1,6 @@
 
 $(document).ready(function () {
+    generateEmployeeID();
     getAll();
 
     $('#employeeSaveBtn').click(function () {
@@ -154,6 +155,28 @@ $(document).ready(function () {
 
         $("#txtEmployeeCode").focus();
     }
+
+    function generateEmployeeID() {
+        $("#txtEmployeeCode").val("EMP00-001");
+        $.ajax({
+            url: "http://localhost:8080/app1/employee/employeeGenerate",
+            method: "GET",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (resp) {
+                let id = resp.value;
+                if (id) {
+                    let tempId = parseInt(id.split("-")[1]) + 1;
+                    let newId = "EMP00-" + tempId.toString().padStart(3, '0');
+                    $("#txtEmployeeCode").val(newId);
+                }
+            },
+            error: function (ob, statusText, error) {
+                console.error("Error generating employee ID:", statusText, error);
+            }
+        });
+    }
+
 
     function getEmployeeDataFromForm() {
         return {
