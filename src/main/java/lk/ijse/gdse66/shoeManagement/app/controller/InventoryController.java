@@ -1,9 +1,11 @@
 package lk.ijse.gdse66.shoeManagement.app.controller;
 
+import lk.ijse.gdse66.shoeManagement.app.dto.CustomDTO;
 import lk.ijse.gdse66.shoeManagement.app.dto.InventoryDTO;
 import lk.ijse.gdse66.shoeManagement.app.repository.InventoryRepo;
 import lk.ijse.gdse66.shoeManagement.app.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,5 +44,12 @@ public class InventoryController {
     @DeleteMapping("/{id}")
     public void deleteInventory(@PathVariable(value = "id") String id){
         inventoryService.deleteInventory(id);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping(path = "/itemIdGenerate")
+    public @ResponseBody
+    CustomDTO inventoryIdGenerate() {
+        return inventoryService.inventoryIdGenerate();
     }
 }
