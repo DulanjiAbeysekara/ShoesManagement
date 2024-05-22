@@ -1,5 +1,6 @@
 package lk.ijse.gdse66.shoeManagement.app.service.impl;
 
+import lk.ijse.gdse66.shoeManagement.app.dto.CustomDTO;
 import lk.ijse.gdse66.shoeManagement.app.dto.SupplierDTO;
 import lk.ijse.gdse66.shoeManagement.app.entity.CustomerEntity;
 import lk.ijse.gdse66.shoeManagement.app.entity.SupplierEntity;
@@ -67,5 +68,11 @@ public class SupplierServiceImpl implements SupplierService {
         }
         supplierRepo.deleteById(id);
         return true;
+    }
+
+    @Override
+    public CustomDTO supplierIdGenerate() {
+        return new CustomDTO(supplierRepo.getLastIndex());
+
     }
 }

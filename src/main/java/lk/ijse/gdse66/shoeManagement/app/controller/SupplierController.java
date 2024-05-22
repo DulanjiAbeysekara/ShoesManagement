@@ -1,5 +1,6 @@
 package lk.ijse.gdse66.shoeManagement.app.controller;
 
+import lk.ijse.gdse66.shoeManagement.app.dto.CustomDTO;
 import lk.ijse.gdse66.shoeManagement.app.dto.CustomerDTO;
 import lk.ijse.gdse66.shoeManagement.app.dto.SupplierDTO;
 import lk.ijse.gdse66.shoeManagement.app.service.CustomerService;
@@ -51,6 +52,13 @@ public class SupplierController {
     @GetMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public SupplierDTO getSupplierDetails(@PathVariable("id")String id){
         return supplierService.geSupplierDetails(id);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping(path = "/supplierIdGenerate")
+    public @ResponseBody
+    CustomDTO supplierIdGenerate() {
+        return supplierService.supplierIdGenerate();
     }
 
 }
