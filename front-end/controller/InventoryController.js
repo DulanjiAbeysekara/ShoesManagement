@@ -1,9 +1,6 @@
 
-
-
-
 $(document).ready(function () {
-
+    generateInventoryID();
     getAll();
 
     $('#btnItemSave').click(function () {
@@ -206,6 +203,28 @@ $(document).ready(function () {
 
         $("#txtItemCode").focus();
     }
+
+    function generateInventoryID() {
+        $("#txtItemCode").val("ITEM00-001");
+        $.ajax({
+            url: "http://localhost:8080/app1/inventory/itemIdGenerate",
+            method: "GET",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (resp) {
+                let id = resp.value;
+                if (id) {
+                    let tempId = parseInt(id.split("-")[1]) + 1;
+                    let newId = "ITEM00-" + tempId.toString().padStart(3, '0');
+                    $("#txtItemCode").val(newId);
+                }
+            },
+            error: function (ob, statusText, error) {
+                console.error("Error generating customer ID:", statusText, error);
+            }
+        });
+    }
+
 
 // function getInventoryDataFromForm() {
 //     return {
