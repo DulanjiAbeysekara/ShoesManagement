@@ -1,5 +1,6 @@
 package lk.ijse.gdse66.shoeManagement.app.service.impl;
 
+import lk.ijse.gdse66.shoeManagement.app.dto.CustomDTO;
 import lk.ijse.gdse66.shoeManagement.app.dto.CustomerDTO;
 import lk.ijse.gdse66.shoeManagement.app.dto.EmployeeDTO;
 import lk.ijse.gdse66.shoeManagement.app.entity.CustomerEntity;
@@ -76,5 +77,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
         employeeRepo.deleteById(id);
         return true;
+    }
+
+    @Override
+    public CustomDTO customerIdGenerate() {
+        return new CustomDTO(employeeRepo.getLastIndex());
     }
 }
