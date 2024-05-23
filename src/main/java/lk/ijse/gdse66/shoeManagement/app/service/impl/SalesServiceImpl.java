@@ -29,6 +29,7 @@ public class SalesServiceImpl implements SalesService {
     SalesDetailsRepository salesDetailsRepository;
     ModelMapper modelMapper;
 
+
     public SalesServiceImpl(SalesRepository salesRepository, SalesDetailsRepository salesDetailsRepository, ModelMapper modelMapper) {
         this.salesRepository = salesRepository;
         this.salesDetailsRepository = salesDetailsRepository;
@@ -63,8 +64,7 @@ public class SalesServiceImpl implements SalesService {
         SalesDTO salesDTO = modelMapper.map(salesRepository.findByOrderNo(id), SalesDTO.class);
         System.out.println("ID-----------------------"+id);
         List<SalesInventoryDTO> salesInventory = salesDetailsRepository.findAllBySalesOrderNo(id).stream().map(
-                salesDetails -> modelMapper.map(salesDetails, SalesInventoryDTO.class)
-        ).toList();
+                salesDetails -> modelMapper.map(salesDetails, SalesInventoryDTO.class)).toList();
         salesDTO.setInventory(salesInventory);
 
         return salesDTO;
