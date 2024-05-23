@@ -12,10 +12,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
 
 
-
 </head>
 
-<body>
+
+<body >
 
 
 <header>
@@ -39,23 +39,23 @@
                             <a class="nav-link active text-bol text-white" aria-current="page" style="font-family: AcmeStatic;" id="linkHome" href="homepage.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2 active text-bol text-white" style="font-family: AcmeStatic;" id="linkCustomer" href="customer.html">Customer</a>
+                            <a class="nav-link mx-lg-2 active text-bol text-white" style="font-family: AcmeStatic;" id="linkCustomer" href="customerNew.html">Customer</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2 active text-bol  text-white" style="font-family: AcmeStatic;" id="linkEmployee" href="employee.html">Employee</a>
+                            <a class="nav-link mx-lg-2 active text-bol  text-white" style="font-family: AcmeStatic;" id="linkEmployee" href="employeeNew.html">Employee</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2 active text-bol  text-white" style="font-family: AcmeStatic;" id="linkSupplier" href="Supplier.html">Suppliers</a>
+                            <a class="nav-link mx-lg-2 active text-bol  text-white" style="font-family: AcmeStatic;" id="linkSupplier" href="supplierNew.html">Suppliers</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2 active text-bol  text-white" style="font-family: AcmeStatic;" id="linkSale" href="sales.html">Sale</a>
+                            <a class="nav-link mx-lg-2 active text-bol  text-white" style="font-family: AcmeStatic;" id="linkSale" href="saleNew.html">Sale</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2  active text-bol  text-white"style="font-family: AcmeStatic;" id="linkInventory" href="inventory.html">Inventory</a>
+                            <a class="nav-link mx-lg-2  active text-bol  text-white"style="font-family: AcmeStatic;" id="linkInventory" href="inventoryNew.html">Inventory</a>
                         </li>
                     </ul>
                 </div>
@@ -65,12 +65,55 @@
     </nav>
 </header>
 
+<!----------------------------------------employee---------------------------------->
+
+<main>
+    <div class="container">
+        <h2 style="font-family: Abril Fatface;">Employee Table</h2>
+
+
+        <div class="row mt-1 mt-md-2 mt-lg-4 justify-content-around" style="height: 320px;">
+            <div class="col-11 justify-content-around sectionBorder" style="height: 290px; background: white">
+                <div class="customerTableDiv overflow-auto" style="height: 270px;">
+                    <table id="tblEmployee" class="table table-success table-striped table-bordered table-hover">
+                        <thead class="text-light table-dark text-center  table-bordered sticky-top">
+                        <tr>
+                            <th>Employee Code</th>
+                            <th>Employee Name</th>
+                            <th>Gender</th>
+                            <th>Status</th>
+                            <th>Level</th>
+                            <th>Designation</th>
+                            <th>Date of Birth</th>
+                            <th>Date Of Join</th>
+                            <th>Attached Branch</th>
+                            <th>Address</th>
+                            <th>Contact No</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    </div>
+
+</main>
+
+
 <script src="../assest/js/jquery-3.6.1.min.js"></script>
 <script src="../controller/CustomerController.js"></script>
 <script src="../controller/EmployeeController.js"></script>
 <script src="../controller/InventoryController.js"></script>
 <script src="../controller/SupllierController.js"></script>
-
 
 </body>
 </html>
