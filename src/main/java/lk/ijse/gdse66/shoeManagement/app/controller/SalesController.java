@@ -12,11 +12,11 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v0/sales")
 @CrossOrigin(origins = "", allowedHeaders = "", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE,RequestMethod.PATCH, RequestMethod.OPTIONS})
-public class SaleController {
+public class SalesController {
 
     private final SalesService saleService;
 
-    public SaleController(SalesService saleService) {
+    public SalesController(SalesService saleService) {
         this.saleService = saleService;
     }
 
