@@ -80,7 +80,14 @@ $(document).ready(function () {
     //     }
     // });
 
+    $('#btnSearchEmployee').click(function (){
+
+    });
+
     //////////////////////////////////methods////////////////////////////////////
+
+
+
     function getAll() {
         $('#tblEmployee tbody').empty();
 
