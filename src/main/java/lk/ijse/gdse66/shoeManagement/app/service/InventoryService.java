@@ -18,6 +18,9 @@ public interface InventoryService {
 
     boolean deleteInventory(String id);
 
+    List<InventoryDTO> searchInventory(String id);
+
+
     @ResponseBody
     CustomDTO inventoryIdGenerate();
 
