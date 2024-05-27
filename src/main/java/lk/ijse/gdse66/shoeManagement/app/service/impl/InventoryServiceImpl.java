@@ -3,6 +3,7 @@ package lk.ijse.gdse66.shoeManagement.app.service.impl;
 import lk.ijse.gdse66.shoeManagement.app.dto.CustomDTO;
 import lk.ijse.gdse66.shoeManagement.app.dto.CustomerDTO;
 import lk.ijse.gdse66.shoeManagement.app.dto.InventoryDTO;
+import lk.ijse.gdse66.shoeManagement.app.entity.CustomerEntity;
 import lk.ijse.gdse66.shoeManagement.app.entity.InventoryEntity;
 import lk.ijse.gdse66.shoeManagement.app.repository.InventoryRepo;
 import lk.ijse.gdse66.shoeManagement.app.service.InventoryService;
@@ -68,6 +69,19 @@ public class InventoryServiceImpl implements InventoryService {
         inventoryRepo.deleteById(id);
         return true;
     }
+
+    @Override
+    public List<InventoryDTO> searchInventory(String id) {
+        List<InventoryEntity> foundInventory = inventoryRepo.findByInventoryIdStaringWith(id);
+
+        if (foundInventory.isEmpty()) {
+            throw new NotFoundException("No customers found with the name: " +id);
+        }
+        return foundInventory.stream()
+                .map(item -> mapper.map(item, InventoryDTO.class))
+                .toList();
+    }
+
 
     @Override
     public CustomDTO inventoryIdGenerate() {
