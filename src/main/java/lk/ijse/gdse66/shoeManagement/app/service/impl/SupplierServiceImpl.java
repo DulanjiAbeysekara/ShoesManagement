@@ -1,8 +1,10 @@
 package lk.ijse.gdse66.shoeManagement.app.service.impl;
 
 import lk.ijse.gdse66.shoeManagement.app.dto.CustomDTO;
+import lk.ijse.gdse66.shoeManagement.app.dto.EmployeeDTO;
 import lk.ijse.gdse66.shoeManagement.app.dto.SupplierDTO;
 import lk.ijse.gdse66.shoeManagement.app.entity.CustomerEntity;
+import lk.ijse.gdse66.shoeManagement.app.entity.EmployeeEntity;
 import lk.ijse.gdse66.shoeManagement.app.entity.SupplierEntity;
 import lk.ijse.gdse66.shoeManagement.app.repository.SupplierRepo;
 import lk.ijse.gdse66.shoeManagement.app.service.SupplierService;
@@ -68,6 +70,18 @@ public class SupplierServiceImpl implements SupplierService {
         }
         supplierRepo.deleteById(id);
         return true;
+    }
+
+    @Override
+    public List<SupplierDTO> searchSupplier(String id) {
+        List<SupplierEntity> foundSupplier = supplierRepo.findByCodeStartingWith(id);
+
+        if (foundSupplier.isEmpty()) {
+            throw new NotFoundException("No suppliers found with the id: " +id);
+        }
+        return foundSupplier.stream()
+                .map(supplier -> mapper.map(supplier, SupplierDTO.class))
+                .toList();
     }
 
     @Override
