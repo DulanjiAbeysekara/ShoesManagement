@@ -23,5 +23,5 @@ public class InventoryDTO implements Serializable {
     private Double unitPriceBuy;
     private Double expectedProfit;
     private Double profitMargin;
-    private String status;
+
 }

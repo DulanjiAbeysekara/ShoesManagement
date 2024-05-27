@@ -17,7 +17,7 @@ public interface CustomerService {
 
     boolean deleteCustomer(String id);
 
-    List<CustomerDTO> searchCustomer(String customer_code);
+    List<CustomerDTO> searchCustomer(String name);
 
     @ResponseBody
     CustomDTO customerIdGenerate();

@@ -62,53 +62,51 @@ $(document).ready(function () {
         });
     });
 
-    // $('#serachCust').keypress(function(event) {
-    //     if (event.keyCode === 13) {
-    //         let customerCode = $('#serachCust').val();
-    //
-    //         $.ajax({
-    //             url: 'http://localhost:8080/app1/cust/search' + customerCode,
-    //             type: 'GET',
-    //             success: function (customer) {
-    //                 if (customer) {
-    //                     setCustomerDataToForm(customer);
-    //                 } else {
-    //                     alert('Customer not found!');
-    //                 }
-    //             },
-    //             error: function (xhr, status, error) {
-    //                 console.error('Error fetching customer information:', error);
-    //                 alert('Error fetching customer information!');
-    //             }
-    //         });
-    //     }
-    // });
+    $('#btnSearch').click(function () {
+        let customerName = $('#txtSearchCustomer').val();
+        searchCustomerByName(customerName);
+    });
 
-    // $('#serachCust').keypress(function(event) {
-    //     if (event.keyCode === 13) {
-    //         let customerCode = $('#serachCust').val().trim();
-    //
-    //         $.ajax({
-    //             url: 'http://localhost:8080/app1/cust/search?customer_code=' + customerCode,
-    //             type: 'GET',
-    //             success: function (customerList) {
-    //                 if (customerList && customerList.length > 0) {
-    //                     let customer = customerList[0]; // Assuming only one customer is returned
-    //                     setCustomerDataToForm(customer);
-    //                 } else {
-    //                     alert('Customer not found!');
-    //                 }
-    //             },
-    //             error: function (xhr, status, error) {
-    //                 console.error('Error fetching customer information:', error);
-    //                 alert('Error fetching customer information!');
-    //             }
-    //         });
-    //     }
-    // });
-    //
+
+
+
+
 
 //////////////////////////////////Methods///////////////////////////////////////////
+    function searchCustomerByName(customerName) {
+        $('#tblCustomers tbody').empty();
+
+        $.ajax({
+            url: 'http://localhost:8080/app1/cust/search/' + customerName,
+            method: 'GET',
+            success: function (resp) {
+                if (resp.length === 0) {
+                    alert('No customer found with the given name');
+                    return;
+                }
+                for (const customer of resp) {
+                    let row = `<tr>
+                                    <td>${customer.customerCode}</td>
+                                    <td>${customer.customerName}</td>
+                                    <td>${customer.gender}</td>
+                                    <td>${customer.joinDateLoyaltyCustomer}</td>
+                                    <td>${customer.level}</td>
+                                    <td>${customer.totalPoints}</td>
+                                    <td>${customer.dateOfBirth}</td>
+                                    <td>${customer.address}</td>
+                                </tr>`;
+                    $('#tblCustomers tbody').append(row);
+                }
+                bindClickEvents();
+            },
+            error: function (error) {
+                console.log('Error:', error);
+                alert('Error searching for customer!');
+            }
+        });
+    }
+
+
     function getAll() {
         $('#tblCustomers tbody').empty();
 

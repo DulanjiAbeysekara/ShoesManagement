@@ -39,7 +39,6 @@ public class CustomerController {
 
     @DeleteMapping("/{id}")
     public void deleteCustomer(@PathVariable(value = "id") String id){
-
         customerService.deleteCustomer(id);
     }
 
@@ -56,17 +55,25 @@ public class CustomerController {
        return customerService.getCustomerDetails(id);
     }
 
-//    @GetMapping("/search")
-//    public List<CustomerDTO> searchCustomer(@RequestParam String customer_code){
-//        return customerService.searchCustomer(customer_code);
+    @GetMapping("/search/{name}")
+    public List<CustomerDTO> searchCustomer(@PathVariable(value = "name") String name){
+        return customerService.searchCustomer(name);
+    }
+
+//
+//    @GetMapping("/searchName/{id}")
+//    public CustomerDTO searchCustomerName(@PathVariable(value = "id")String id){
+//        return customerService.searchCustomerById(id);
 //    }
 
 
-    @GetMapping("/search")
-    public ResponseEntity<List<CustomerDTO>> searchCustomer(@RequestParam String customer_code) {
-        List<CustomerDTO> customerList = customerService.searchCustomer(customer_code);
-        return ResponseEntity.ok().body(customerList);
-    }
+
+
+//    @GetMapping("/{customerCode}")
+//    public ResponseEntity<List<CustomerDTO>> searchCustomer(@PathVariable(value = "customer_code") String customer_code) {
+//        List<CustomerDTO> customerList = customerService.searchCustomer(customer_code);
+//        return ResponseEntity.ok().body(customerList);
+//    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @GetMapping(path = "/cusIdGenerate")

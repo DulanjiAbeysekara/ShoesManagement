@@ -80,16 +80,24 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<CustomerDTO> searchCustomer(String customer_code) {
-        List<CustomerEntity> foundCustomer = customerRepo.findByCustomerNameStartingWith(customer_code);
+    public List<CustomerDTO> searchCustomer(String name) {
+        List<CustomerEntity> foundCustomer = customerRepo.findByCustomerNameStartingWith(name);
 
         if (foundCustomer.isEmpty()) {
-            throw new NotFoundException("No customers found with the name: " + customer_code);
+            throw new NotFoundException("No customers found with the name: " +name);
         }
         return foundCustomer.stream()
                 .map(customer -> mapper.map(customer, CustomerDTO.class))
                 .toList();
     }
+
+//    @Override
+//    public CustomerDTO searchCustomerById(String code) {
+//        if (!customerRepo.existsById(code)){
+//            throw new NotFoundException("Customer Code does not exists!");
+//        }
+//        return mapper.map(customerRepo.findByCode(code),CustomerDTO.class);
+//    }
 
     @Override
     public CustomDTO customerIdGenerate() {
