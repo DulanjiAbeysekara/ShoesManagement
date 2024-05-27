@@ -18,6 +18,7 @@ public interface EmployeeService {
 
     boolean deleteEmployee(String id);
 
+    List<EmployeeDTO> searchEmployee(String id);
 
     @ResponseBody
     CustomDTO employeeIdGenerate();

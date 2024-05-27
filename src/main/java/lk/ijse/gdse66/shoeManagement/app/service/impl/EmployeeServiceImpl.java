@@ -80,6 +80,18 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    public List<EmployeeDTO> searchEmployee(String id) {
+        List<EmployeeEntity> foundEmployee = employeeRepo.findByEmployeeCodeStartingWith(id);
+
+        if (foundEmployee.isEmpty()) {
+            throw new NotFoundException("No customers found with the id: " +id);
+        }
+        return foundEmployee.stream()
+                .map(employee -> mapper.map(employee, EmployeeDTO.class))
+                .toList();
+    }
+
+    @Override
     public CustomDTO employeeIdGenerate() {
         return new CustomDTO(employeeRepo.getLastIndex());
     }

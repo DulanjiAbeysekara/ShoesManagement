@@ -55,6 +55,11 @@ public class EmployeeController {
         return employeeService.getEmployeeDetails(id);
     }
 
+    @GetMapping("/search/{id}")
+    public List<EmployeeDTO> searchEmployee(@PathVariable(value = "id") String id){
+        return employeeService.searchEmployee(id);
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @GetMapping(path = "/employeeGenerate")
     public @ResponseBody
