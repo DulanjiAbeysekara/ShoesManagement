@@ -47,6 +47,7 @@ public class InventoryController {
         inventoryService.deleteInventory(id);
     }
 
+
     @GetMapping("/search/{id}")
     public List<InventoryDTO> searchInventory(@PathVariable(value = "id") String id){
         return inventoryService.searchInventory(id);

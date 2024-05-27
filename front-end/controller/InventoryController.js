@@ -101,7 +101,6 @@ $(document).ready(function () {
 
     });
 
-
     $("#btnItemDlt").click(function () {
         let itemCode = $('#txtItemCode').val();
 
@@ -122,8 +121,52 @@ $(document).ready(function () {
 
     });
 
+    $('#btnItemSearch').click(function (){
 
-//////////////////////////////////Methods///////////////////////////////////////////////
+        let itemId = $('#txtItemSearch').val();
+        searchInventoryById(itemId);
+
+    });
+
+    //////////////////////////////////methods////////////////////////////////////
+
+    function searchInventoryById(id){
+        $('#tblItem tbody').empty();
+
+        $.ajax({
+            url: 'http://localhost:8080/app1/inventory/search/' + id,
+            method: 'GET',
+            success: function (resp) {
+                if (resp.length === 0) {
+                    alert('No item found with the given id');
+                    return;
+                }
+                for (const item of resp) {
+                    let row = `<tr>
+                                 <td>${item.itemCode}</td>
+                                <td>${item.itemDesc}</td>
+                                <td>${item.itemPicture}</td>
+                                <td>${item.category}</td>
+                                <td>${item.size}</td>
+                                 <td>${item.supplierCode}</td>
+                                <td>${item.supplierName}</td>
+                                <td>${item.unitPriceSale}</td>
+                                <td>${item.unitPriceBuy}</td>
+                                <td>${item.expectedProfit}</td>
+                                <td>${item.profitMargin}</td>
+                               <td>${item.status}</td>
+                                </tr>`;
+                    $('#tblItem tbody').append(row);
+                }
+                bindClickEvents();
+            },
+            error: function (error) {
+                console.log('Error:', error);
+                alert('Error searching for customer!');
+            }
+        });
+    }
+
     function getAll() {
         $('#tblItem tbody').empty();
 
@@ -138,13 +181,13 @@ $(document).ready(function () {
                                 <td>${item.itemPicture}</td>
                                 <td>${item.category}</td>
                                 <td>${item.size}</td>
-                                <td>${item.supplierCode}</td>
+                                 <td>${item.supplierCode}</td>
                                 <td>${item.supplierName}</td>
                                 <td>${item.unitPriceSale}</td>
                                 <td>${item.unitPriceBuy}</td>
                                 <td>${item.expectedProfit}</td>
                                 <td>${item.profitMargin}</td>
-                                <td>${item.status}</td>
+                               <td>${item.status}</td>
                             </tr>`;
                     $('#tblItem tbody').append(row);
                 }
