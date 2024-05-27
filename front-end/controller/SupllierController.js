@@ -103,8 +103,46 @@ $(document).ready(function () {
 
     });
 
+    $('#btnSearchSupplier').click(function (){
 
-//////////////////////////methods//////////////////////////////////////////
+        let supplierId = $('#txtSearchSupplier').val();
+        searchSupplierById(supplierId);
+
+    });
+
+    //////////////////////////////////methods////////////////////////////////////
+
+    function searchSupplierById(id){
+        $('#tblSupplier tbody').empty();
+
+        $.ajax({
+            url: 'http://localhost:8080/app1/supplier/search/' + id,
+            method: 'GET',
+            success: function (resp) {
+                if (resp.length === 0) {
+                    alert('No supplier found with the given id');
+                    return;
+                }
+                for (const supplier of resp) {
+                    let row = `<tr>
+                                <td>${supplier.code}</td>
+                                <td>${supplier.name}</td>
+                                <td>${supplier.category}</td>
+                                <td>${supplier.address}</td>
+                                <td>${supplier.contactNo1}</td>
+                                <td>${supplier.contactNo2}</td>
+                                <td>${supplier.email}</td>
+                                </tr>`;
+                    $('#tblSupplier tbody').append(row);
+                }
+                bindClickEvents();
+            },
+            error: function (error) {
+                console.log('Error:', error);
+                alert('Error searching for supplier!');
+            }
+        });
+    }
 
     function getAll() {
         $('#tblSupplier tbody').empty();
