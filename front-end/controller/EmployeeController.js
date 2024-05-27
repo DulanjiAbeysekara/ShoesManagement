@@ -82,11 +82,48 @@ $(document).ready(function () {
 
     $('#btnSearchEmployee').click(function (){
 
+        let employeeId = $('#txtSearchEmployee').val();
+        searchEmployeeById(employeeId);
+
     });
 
     //////////////////////////////////methods////////////////////////////////////
 
+    function searchEmployeeById(id){
+        $('#tblEmployee tbody').empty();
 
+        $.ajax({
+            url: 'http://localhost:8080/app1/employee/search/' + id,
+            method: 'GET',
+            success: function (resp) {
+                if (resp.length === 0) {
+                    alert('No employee found with the given id');
+                    return;
+                }
+                for (const employee of resp) {
+                    let row = `<tr>
+                                <td>${employee.employeeCode}</td>
+                                <td>${employee.employeeName}</td>
+                                <td>${employee.gender}</td>
+                                <td>${employee.status}</td>
+                                <td>${employee.designation}</td>
+                                <td>${employee.accessRole}</td>
+                                <td>${employee.dob}</td>
+                                <td>${employee.dateOfJoin}</td>
+                                <td>${employee.attachedBranch}</td>
+                                <td>${employee.address}</td>
+                                <td>${employee.contactNo}</td>
+                                </tr>`;
+                    $('#tblEmployee tbody').append(row);
+                }
+                bindClickEvents();
+            },
+            error: function (error) {
+                console.log('Error:', error);
+                alert('Error searching for customer!');
+            }
+        });
+    }
 
     function getAll() {
         $('#tblEmployee tbody').empty();

@@ -204,14 +204,14 @@ $(document).ready(function () {
         };
     }
 
-    function setCustomerDataToForm(customer) {
-        $('#txtCustomerCode').val(customer.customerCode);
-        $('#txtCustomerName').val(customer.customerName);
-        $('#txtGender').val(customer.gender);
-        $('#txtJoinDateLoyaltyCustomer').val(customer.joinDateLoyaltyCustomer);
-        $('#txtLevel').val(customer.level);
-        $('#txtTotalPoints').val(customer.totalPoints);
-        $('#txtDateOfBirth').val(customer.dateOfBirth);
-        $('#txtAddress').val(customer.address);
-    }
+    // function setCustomerDataToForm(customer) {
+    //     $('#txtCustomerCode').val(customer.customerCode);
+    //     $('#txtCustomerName').val(customer.customerName);
+    //     $('#txtGender').val(customer.gender);
+    //     $('#txtJoinDateLoyaltyCustomer').val(customer.joinDateLoyaltyCustomer);
+    //     $('#txtLevel').val(customer.level);
+    //     $('#txtTotalPoints').val(customer.totalPoints);
+    //     $('#txtDateOfBirth').val(customer.dateOfBirth);
+    //     $('#txtAddress').val(customer.address);
+    // }
 });
