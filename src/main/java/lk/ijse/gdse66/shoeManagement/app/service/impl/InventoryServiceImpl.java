@@ -72,7 +72,7 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public List<InventoryDTO> searchInventory(String id) {
-        List<InventoryEntity> foundInventory = inventoryRepo.findByInventoryIdStaringWith(id);
+        List<InventoryEntity> foundInventory = inventoryRepo.findByItemCodeStartingWith(id);
 
         if (foundInventory.isEmpty()) {
             throw new NotFoundException("No customers found with the name: " +id);

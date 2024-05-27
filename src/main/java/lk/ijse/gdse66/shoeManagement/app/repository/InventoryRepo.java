@@ -12,7 +12,7 @@ public interface InventoryRepo extends JpaRepository<InventoryEntity,String> {
     @Query(value = "SELECT item_code FROM inventory ORDER BY item_code DESC LIMIT 1", nativeQuery = true)
     String getLastIndex();
 
-    List<InventoryEntity> findByInventoryIdStaringWith(String id);
+    List<InventoryEntity> findByItemCodeStartingWith(String id);
 
 
 }

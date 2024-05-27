@@ -1,6 +1,7 @@
 package lk.ijse.gdse66.shoeManagement.app.controller;
 
 import lk.ijse.gdse66.shoeManagement.app.dto.CustomDTO;
+import lk.ijse.gdse66.shoeManagement.app.dto.CustomerDTO;
 import lk.ijse.gdse66.shoeManagement.app.dto.InventoryDTO;
 import lk.ijse.gdse66.shoeManagement.app.repository.InventoryRepo;
 import lk.ijse.gdse66.shoeManagement.app.service.InventoryService;
@@ -44,6 +45,11 @@ public class InventoryController {
     @DeleteMapping("/{id}")
     public void deleteInventory(@PathVariable(value = "id") String id){
         inventoryService.deleteInventory(id);
+    }
+
+    @GetMapping("/search/{id}")
+    public List<InventoryDTO> searchInventory(@PathVariable(value = "id") String id){
+        return inventoryService.searchInventory(id);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
