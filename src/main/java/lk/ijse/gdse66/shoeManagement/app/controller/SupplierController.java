@@ -60,11 +60,11 @@ public class SupplierController {
         return supplierService.searchSupplier(id);
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @GetMapping(path = "/supplierIdGenerate")
-    public @ResponseBody
-    CustomDTO supplierIdGenerate() {
-        return supplierService.supplierIdGenerate();
-    }
+//    @ResponseStatus(HttpStatus.CREATED)
+//    @GetMapping(path = "/supplierIdGenerate")
+//    public @ResponseBody
+//    CustomDTO supplierIdGenerate() {
+//        return supplierService.supplierIdGenerate();
+//    }
 
 }

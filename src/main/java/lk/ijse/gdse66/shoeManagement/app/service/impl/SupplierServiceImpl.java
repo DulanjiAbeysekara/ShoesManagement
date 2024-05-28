@@ -1,5 +1,6 @@
 package lk.ijse.gdse66.shoeManagement.app.service.impl;
 
+import jakarta.transaction.Transactional;
 import lk.ijse.gdse66.shoeManagement.app.dto.CustomDTO;
 import lk.ijse.gdse66.shoeManagement.app.dto.EmployeeDTO;
 import lk.ijse.gdse66.shoeManagement.app.dto.SupplierDTO;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+
 public class SupplierServiceImpl implements SupplierService {
     @Autowired
     SupplierRepo supplierRepo;
@@ -84,9 +86,9 @@ public class SupplierServiceImpl implements SupplierService {
                 .toList();
     }
 
-    @Override
-    public CustomDTO supplierIdGenerate() {
-        return new CustomDTO(supplierRepo.getLastIndex());
-
-    }
+//    @Override
+//    public CustomDTO supplierIdGenerate() {
+//        return new CustomDTO(supplierRepo.getLastIndex());
+//
+//    }
 }

@@ -1,5 +1,6 @@
 package lk.ijse.gdse66.shoeManagement.app.service.impl;
 
+import jakarta.transaction.Transactional;
 import lk.ijse.gdse66.shoeManagement.app.dto.OrderDTO;
 import lk.ijse.gdse66.shoeManagement.app.dto.OrderDetailDTO;
 import lk.ijse.gdse66.shoeManagement.app.entity.CustomerEntity;
@@ -14,8 +15,11 @@ import lk.ijse.gdse66.shoeManagement.app.service.SaleService;
 import lk.ijse.gdse66.shoeManagement.app.util.Level;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class SaleServiceImpl implements SaleService {
+
     @Autowired
     private SaleDetailsRepo orderDetailRepo;
     @Autowired

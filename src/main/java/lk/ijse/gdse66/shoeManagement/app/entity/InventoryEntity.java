@@ -29,9 +29,9 @@ public class InventoryEntity {
     private Integer size8;
     private Integer size10;
     private Integer size11;
-
+    private String supplierCode;
     private String supplierName;
-
+    private String status;
     private Double unitPriceSale;
 
     private Double unitPriceBuy;

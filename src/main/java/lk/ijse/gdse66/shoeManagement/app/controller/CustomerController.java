@@ -75,12 +75,12 @@ public class CustomerController {
 //        return ResponseEntity.ok().body(customerList);
 //    }
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @GetMapping(path = "/cusIdGenerate")
-    public @ResponseBody
-    CustomDTO customerIdGenerate() {
-        return customerService.customerIdGenerate();
-    }
+//    @ResponseStatus(HttpStatus.CREATED)
+//    @GetMapping(path = "/cusIdGenerate")
+//    public @ResponseBody
+//    CustomDTO customerIdGenerate() {
+//        return customerService.customerIdGenerate();
+//    }
 }
 
 

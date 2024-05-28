@@ -22,7 +22,7 @@ public interface InventoryRepo extends JpaRepository<InventoryEntity,String> {
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE Item " +
+    @Query(value = "UPDATE Inventory " +
             "SET " +
             "status = :status, " +
             "size6 = CASE WHEN :size = '6' THEN :qty ELSE size6 END, " +
@@ -39,7 +39,7 @@ public interface InventoryRepo extends JpaRepository<InventoryEntity,String> {
             "   WHEN :size = '11' THEN i.size11" +
             "   ELSE 0 " +
             "END " +
-            "FROM Item i " +
+            "FROM Inventory i " +
             "WHERE i.item_code = :itemCode", nativeQuery = true)
     Integer findQtyByItemCodeAndSize(String itemCode, String size);
 
