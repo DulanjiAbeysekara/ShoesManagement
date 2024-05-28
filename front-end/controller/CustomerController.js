@@ -2,10 +2,14 @@
 $(document).ready(function () {
 
     $("#txtCustomerName").keyup(function (e) {
-        if (nameRegex.test($("#txtCustomerName").val())) {
-            $('#txtCustomerName').css("border-color", "green");
+        const customerName = $(this).val();
+
+        if (nameRegex.test(customerName)) {
+            $('#txtCustomerName').css("border-color", "transparent");
+            $('#nameError').hide();
         } else {
             $('#txtCustomerName').css("border-color", "red");
+            $('#nameError').show();
         }
     });
 
