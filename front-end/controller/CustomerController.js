@@ -19,10 +19,10 @@ $(document).ready(function () {
 
         if (addressRegex.test(customerAddress)) {
             $('#txtAddress').css("border-color", "transparent");
-            // $('#nameError').hide();
+            $('#addressError').hide();
         } else {
             $('#txtAddress').css("border-color", "red");
-            // $('#nameError').show();
+            $('#addressError').show();
         }
     });
 
