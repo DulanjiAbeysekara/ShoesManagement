@@ -1,6 +1,7 @@
 
 $(document).ready(function () {
 
+///////////////////////////////////////////Validation////////////////////////////////////////////////////
     $("#txtCustomerName").keyup(function (e) {
         const customerName = $(this).val();
 
@@ -12,6 +13,22 @@ $(document).ready(function () {
             $('#nameError').show();
         }
     });
+
+    $("#txtAddress").keyup(function (e) {
+        const customerAddress = $(this).val();
+
+        if (addressRegex.test(customerAddress)) {
+            $('#txtAddress').css("border-color", "transparent");
+            // $('#nameError').hide();
+        } else {
+            $('#txtAddress').css("border-color", "red");
+            // $('#nameError').show();
+        }
+    });
+
+
+
+////////////////////////////////////////////////////////////////
 
     generateCustomerID();
     getAll();
