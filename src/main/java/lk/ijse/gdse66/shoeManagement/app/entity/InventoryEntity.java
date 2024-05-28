@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -16,38 +17,30 @@ import java.util.function.Supplier;
 public class InventoryEntity {
 
     @Id
-    @Column(name = "item_code", nullable = false)
     private String itemCode;
 
-    @Column(name = "itemDesc", nullable = false)
     private String itemDesc;
 
-    @Column(name = "itemPicture", columnDefinition = "LONGTEXT")
     private String itemPicture;
 
-    @Column(name = "category", nullable = false)
     private String category;
 
-    @Column(name = "size", nullable = false)
-    private Integer size;
+    private Integer size6;
+    private Integer size8;
+    private Integer size10;
+    private Integer size11;
 
-    @Column(name = "supplierName", nullable = false)
     private String supplierName;
 
-    @Column(name = "unitPriceSale", nullable = false)
     private Double unitPriceSale;
 
-    @Column(name = "unitPriceBuy", nullable = false)
     private Double unitPriceBuy;
 
-    @Column(name = "expectedProfit", nullable = false)
     private Double expectedProfit;
 
-
-    @Column(name = "profitMargin", nullable = false)
     private Double profitMargin;
 
-//    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "inventory")
-//    private List<SalesDetailsEntity> saleDetails;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "item_code")
+    private List<SalesDetailEntity> orderDetails = new ArrayList<>();
 
 }

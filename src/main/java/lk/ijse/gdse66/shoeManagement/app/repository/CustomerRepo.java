@@ -13,5 +13,5 @@ public interface CustomerRepo extends JpaRepository<CustomerEntity,String> {
 
     List<CustomerEntity> findByCustomerNameStartingWith(String name);
 
-//    CustomerEntity findByCode(String id);
+    CustomerEntity findByCustomerCode(String id);
 }
