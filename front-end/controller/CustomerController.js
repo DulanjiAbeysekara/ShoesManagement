@@ -1,6 +1,14 @@
 
 $(document).ready(function () {
 
+    $("#txtCustomerName").keyup(function (e) {
+        if (nameRegex.test($("#txtCustomerName").val())) {
+            $('#txtCustomerName').css("border-color", "green");
+        } else {
+            $('#txtCustomerName').css("border-color", "red");
+        }
+    });
+
     generateCustomerID();
     getAll();
 

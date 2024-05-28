@@ -1,0 +1,1 @@
+let nameRegex = /^[a-zA-Z\s]+$/;
