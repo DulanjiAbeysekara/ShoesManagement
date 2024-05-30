@@ -1,4 +1,4 @@
-package lk.ijse.gdse66.shoeManagement.app.auth.response;
+package lk.ijse.gdse66.shoeManagement.app.auth.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Data
-public class JwtAuthResponse {
-    private String token;
+public class SingUpRequest {
+    private String email;
+    private String password;
+    private String role;
 }
