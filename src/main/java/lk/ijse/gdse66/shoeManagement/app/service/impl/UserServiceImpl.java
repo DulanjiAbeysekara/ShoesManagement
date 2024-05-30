@@ -8,65 +8,37 @@ import lk.ijse.gdse66.shoeManagement.app.repository.UserRepo;
 import lk.ijse.gdse66.shoeManagement.app.service.UserService;
 import lk.ijse.gdse66.shoeManagement.app.service.exception.DuplicateRecordException;
 import lk.ijse.gdse66.shoeManagement.app.service.exception.NotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
+@Transactional
 public class UserServiceImpl implements UserService {
-    @Autowired
-    private UserRepo userRepo;
-
-    @Autowired
-    private ModelMapper mapper;
-
-    public UserServiceImpl(UserRepo userRepo, ModelMapper mapper) {
-        this.userRepo = userRepo;
-        this.mapper = mapper;
-    }
+    private final PasswordEncoder passwordEncoder;
+    private final UserRepo userRepo;
+    private final ModelMapper mapper;
 
     @Override
-    public List<UserDTO> getAllUsers() {
-        return userRepo.findAll().stream().map(
-                users -> mapper.map(users, UserDTO.class)).toList();
+    public UserDetailsService userDetailService() {
+        return username -> userRepo.findByEmail(username)
+                .orElseThrow(() -> new
+                        UsernameNotFoundException(
+                        "user not found"));
     }
-
     @Override
-    public UserDTO getUserDetails(String id) {
-        return null;
-    }
-
-    @Override
-    public UserDTO saveUser(UserDTO userDTO) {
-        if (userRepo.existsById(userDTO.getUserId())) {
-            throw new DuplicateRecordException("customer ID is Already Exist");
-
+    public UserDTO searchUser(String id){
+        return (UserDTO) userRepo.findByEmail(id)
+                .map(user -> mapper.map(user, UserDTO.class)
+                )
+                .orElseThrow(() -> new RuntimeException("User Not Exist"));
         }
-        System.out.println(userDTO);
-        return mapper.map(userRepo.save(mapper.map(userDTO, UserEntity.class)), UserDTO.class);
-    }
-
-    @Override
-    public UserDTO updateUser(UserDTO userDTO) {
-        if (!userRepo.existsById(userDTO.getUserId())) {
-            throw new NotFoundException("Can't find customer id !!");
-        }
-
-        UserEntity userEntity = userRepo.findById(userDTO.getUserId()).get();
-        System.out.println("user is " + userEntity);
-
-        return mapper.map(userRepo.save(mapper.map(userDTO, UserEntity.class)), UserDTO.class);
-
-    }
-
-    @Override
-    public boolean deleteUser(String id) {
-        if (!userRepo.existsById(id)) {
-            throw new NotFoundException("Can't find user id!!!");
-        }
-        userRepo.deleteById(id);
-        return true;
-    }
 }
