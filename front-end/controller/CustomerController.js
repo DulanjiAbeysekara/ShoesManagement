@@ -14,6 +14,7 @@ $(document).ready(function () {
         }
     });
 
+
     $("#txtAddress").keyup(function (e) {
         const customerAddress = $(this).val();
 
@@ -36,9 +37,16 @@ $(document).ready(function () {
     $('#btnSave').click(function () {
         let customer = getCustomerDataFromForm();
 
+        // performAuthenticatedRequest();
+
+        const accessToken = localStorage.getItem('accessToken')
+
         $.ajax({
             url: 'http://localhost:8080/app1/cust/save',
             type: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             contentType: 'application/json',
             data: JSON.stringify(customer),
             success: function (response) {
@@ -56,9 +64,16 @@ $(document).ready(function () {
     $('#btnUpdate').click(function () {
         let customer = getCustomerDataFromForm();
 
+        const accessToken = localStorage.getItem('accessToken');
+
         $.ajax({
             url: 'http://localhost:8080/app1/cust/update',
             type: 'PATCH',
+
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
+
             contentType: 'application/json',
             data: JSON.stringify(customer),
             success: function (response) {
@@ -76,9 +91,16 @@ $(document).ready(function () {
     $('#btnDelete').click(function () {
         let customerCode = $('#txtCustomerCode').val();
 
+        const accessToken = localStorage.getItem('accessToken');
+
         $.ajax({
             url: 'http://localhost:8080/app1/cust/' + customerCode,
             type: 'DELETE',
+
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
+
             success: function (response) {
                 alert('Customer information deleted successfully!');
                 clearFields();
@@ -105,9 +127,14 @@ $(document).ready(function () {
     function searchCustomerByName(customerName) {
         $('#tblCustomers tbody').empty();
 
+        const accessToken = localStorage.getItem('accessToken');
+
         $.ajax({
             url: 'http://localhost:8080/app1/cust/search/' + customerName,
             method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             success: function (resp) {
                 if (resp.length === 0) {
                     alert('No customer found with the given name');
@@ -139,9 +166,15 @@ $(document).ready(function () {
     function getAll() {
         $('#tblCustomers tbody').empty();
 
+        const accessToken = localStorage.getItem('accessToken');
+
         $.ajax({
             url: "http://localhost:8080/app1/cust/getAllCustomers",
             method: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
+
             success: function (resp) {
                 for (const customer of resp) {
                     let row = `<tr>
@@ -201,9 +234,15 @@ $(document).ready(function () {
 
     function generateCustomerID() {
         $("#txtCustomerCode").val("C00-001");
+
+        const accessToken = localStorage.getItem('accessToken');
+
         $.ajax({
             url: "http://localhost:8080/app1/cust/cusIdGenerate",
             method: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             contentType: "application/json",
             dataType: "json",
             success: function (resp) {
@@ -233,14 +272,5 @@ $(document).ready(function () {
         };
     }
 
-    // function setCustomerDataToForm(customer) {
-    //     $('#txtCustomerCode').val(customer.customerCode);
-    //     $('#txtCustomerName').val(customer.customerName);
-    //     $('#txtGender').val(customer.gender);
-    //     $('#txtJoinDateLoyaltyCustomer').val(customer.joinDateLoyaltyCustomer);
-    //     $('#txtLevel').val(customer.level);
-    //     $('#txtTotalPoints').val(customer.totalPoints);
-    //     $('#txtDateOfBirth').val(customer.dateOfBirth);
-    //     $('#txtAddress').val(customer.address);
-    // }
+
 });

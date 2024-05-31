@@ -1,10 +1,259 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<link rel="stylesheet" href="../assest/new2.css">
+<meta charset="UTF-8">
+<title>Shoe Management</title>
+<link rel="stylesheet" href="../assest/bootstrap-5.3.2-dist/css/bootstrap.css">
+<script src="../assest/bootstrap-5.3.2-dist/js/bootstrap.bundle.js"></script>
+<!--<link rel="stylesheet" href="../assest/new.css">-->
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
 
+
+<style>
+    body {
+        background: linear-gradient(to right, rgba(58, 13, 112, 0.7), rgba(58, 13, 112, 0.7)),
+        url("../assest/image/img4.jpeg") no-repeat center center fixed;
+        background-size: cover;
+        color: white;
+    }
+
+    h1 {
+
+        color: white;
+        padding: 20px;
+        text-align: center;
+        margin-top: 60px;
+        font-family: 'Abril Fatface', cursive;
+    }
+
+    form {
+        padding-top: 15px;
+
+    }
+
+    label {
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    input[type="text"], input[type="number"], input[type="datetime-local"] {
+        width: 90%;
+        padding: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #efebeb;
+    }
+
+    select {
+        width: 93%;
+        padding: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #fff3f3;
+    }
+
+    #customerName, #itemName, #totalAmount, #cash, #balance {
+        display: block;
+        width: 90%;
+        padding: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #fdfdfd;
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid #1d1d1d;
+        text-align: left;
+    }
+
+    th {
+        background-color: #8d8b8b;
+        /*color: #131313;*/
+    }
+
+    button[type="submit"], button[type="button"] {
+        background-color: #0092d9;
+        color: #000000;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+
+    button[type="button"] {
+        width: 160px;
+        background-color: #acabab;
+        margin-top: 77px;
+        margin-left: 110px;
+    }
+
+    #one, #two, #three {
+        width: 32%;
+        background-color: rgb(248, 255, 254);
+        float: left;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    #two {
+        margin-left: 2%;
+    }
+
+    #three {
+        margin-left: 2%;
+    }
+
+    @media (max-width: 768px) {
+        #one, #two, #three {
+            width: 100%;
+            margin-left: 0;
+            margin-top: 10px;
+        }
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+</style>
+
+
+
+</head>
+
+<header>
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-image: linear-gradient(to left, #6B3278 10%, #9D4DFF); ">
+        <div class="container-fluid">
+            <a class="navbar-brand" style="font-family:Abril Fatface;"  href="#">Trendy Treads</a>
+
+            <a class="singup-button  me-auto text-black active text-white " href="userregisration.html" >Sing In</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title  active text-bol text-white" style="font-family: Abril Fatface" id="offcanvasNavbarLabel">Trendy Treads</h5>
+                    <button type="button" class="btn-close bg-light" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav  justify-content-center flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active text-bol text-white" aria-current="page" style="font-family: AcmeStatic;" id="linkHome" href="homepageUser.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2 active text-bol text-white" style="font-family: AcmeStatic;" id="linkCustomer" href="customerNew.html">Customer</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2 active text-bol  text-white" style="font-family: AcmeStatic;" id="linkEmployee" href="employeeNew.html">Employee</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2 active text-bol  text-white" style="font-family: AcmeStatic;" id="linkSupplier" href="supplierNew.html">Suppliers</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2 active text-bol  text-white" style="font-family: AcmeStatic;" id="linkSale" href="saleNew.html">Sale</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2  active text-bol  text-white"style="font-family: AcmeStatic;" id="linkInventory" href="inventoryNew.html">Inventory</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </nav>
+</header>
+<body style="background-color: #454545">
+<h1>Order Form</h1>
+<form >
+    <div id="one" style="background-color:mediumpurple">
+        <label for="orderId" style="color: #ffffff">Order ID:</label>
+        <input type="text" id="orderId" name="orderId" style="background-color: #ffffff; color: white"><br>
+
+        <label for="orderDate" style="color: #ffffff">Order Date:</label>
+        <input type="datetime-local" id="orderDate" name="orderDate" style="background-color: #ffffff; color: white"><br>
+
+        <label for="addedPoints" style="color: #ffffff">Added Points:</label>
+        <input type="number" id="addedPoints" name="addedPoints" style="background-color: #ffffff; color: white"><br>
+
+        <label for="PaymentMethord" style="color: #ffffff">Payment Method:</label>
+        <select id="PaymentMethord" name="PaymentMethord" style="background-color: #ffffff; color: white">
+            <option value="CreditCard">Credit card</option>
+            <option value="DebitCard">Debit card</option>
+            <option value="Cash">Cash</option>
+        </select><br>
+
+        <label for="CustomerId" style="color: #ffffff">Customer ID:</label>
+        <select id="CustomerId" name="CustomerId" oninput="setCustomerName()" style="background-color: #ffffff; "></select><br>
+
+        <label for="CustomerName" style="color: #ffffff">Customer Name:</label>
+        <input disabled type="text" id="customerName" name="customerName" style="background-color: #ffffff; color: white"><br>
+    </div>
+
+    <div id="two" style="background-color:mediumpurple;">
+        <label for="ItemId" style="color: #ffffff">Item ID:</label>
+        <select id="ItemId" name="ItemId" oninput="setItemName()" style="background-color: #ffffff; color: white"></select><br>
+
+        <label for="itemName" style="color: #ffffff">Item Name:</label>
+        <input disabled type="text" id="itemName" name="itemName" style="background-color: #ffffff; color: white">
+
+        <label for="Size" style="color: #ffffff">Size:</label>
+        <select id="Size" name="Size" style="background-color: #ffffff; ">
+            <option value="6">6</option>
+            <option value="8">8</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+        </select><br>
+
+        <label for="unitPrice" style="color: #ffffff">Unit Price:</label>
+        <input disabled type="text" id="unitPrice" name="unitPrice" style="background-color: #ffffff; color: white"><br>
+
+        <label for="quantity" style="color: #ffffff">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" style="background-color: #ffffff; color: white"><br>
+    </div>
+
+    <div id="three" style="background-color:mediumpurple;">
+        <label for="cashierName" style="color: #ffffff">Cashier Name:</label>
+        <select id="cashierName" name="cashierName" style="background-color: #ffffff; color: white">
+            <option>Dulanji</option>
+            <option>Nimal</option>
+        </select><br>
+
+        <label for="totalAmount" style="color: #ffffff">Total Amount:</label>
+        <span id="totalAmount" style="background-color: #ffffff; color: white">0</span><br>
+
+        <label for="cash" style="color: #ffffff">Cash:</label>
+        <input type="number" id="cash" name="cash" oninput="calculateBalance()" style="background-color: #ffffff; "><br>
+
+        <label for="balance" style="color: #ffffff">Balance:</label>
+        <span id="balance" style="background-color: #ffffff; color: white">0</span><br>
+
+        <button type="button" class="btn btn-success" id="addToCartBTN" onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <table>
+        <thead>
+        <tr style="background-color: #334344; color: white">
+            <th>Item Code</th>
+            <th>Item Name</th>
+            <th>Size</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+        </tr>
+        </thead>
+        <tbody id="tbody-orderCart">
+        </tbody>
+    </table>
+
+    <button type="submit">Submit</button>
+</form>
+
+<script src="../assest/js/jquery-3.6.1.min.js"></script>
+<script src="../controller/SaleController.js"></script>
 </body>
 </html>
