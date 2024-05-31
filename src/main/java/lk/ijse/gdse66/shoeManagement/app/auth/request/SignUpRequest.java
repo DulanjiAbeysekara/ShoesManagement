@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Data
-public class SingInRequest {
+public class SignUpRequest {
     private String email;
     private String password;
+    private String role;
 }

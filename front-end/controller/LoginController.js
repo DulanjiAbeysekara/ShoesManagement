@@ -131,19 +131,65 @@
 
 
 
-$("#btnSingUp").click(function() {
+// $("#btnSingUp").click(function() {
+//     let value = {
+//         email: $("#upUser_Name").val(),
+//         password: $("#upPassword").val(),
+//         role: $('#role_Type').val()
+//     };
+//     console.log(value);
+//     $.ajax({
+//         url: "http://localhost:8080/app1/api/v1/auth/signup",
+//         method: "POST",
+//         data: JSON.stringify(value),
+//         contentType: "application/json",
+//         success: function (res, textStatus, jsXH) {
+//             localStorage.setItem('accessToken', res.token);
+//             Swal.fire({
+//                 icon: "success",
+//                 title: "User Added Successfully",
+//                 showConfirmButton: true,
+//                 timer: 1500
+//             });
+//         },
+//         error: function (jqXHR, textStatus, errorThrown) {
+//             if (jqXHR.status === 403) {
+//                 Swal.fire({
+//                     icon: "error",
+//                     title: "Forbidden",
+//                     text: "You don't have permission to access this resource.",
+//                     showConfirmButton: true
+//                 });
+//             } else {
+//                 Swal.fire({
+//                     icon: "error",
+//                     title: "Error User Not Added",
+//                     text: "An error occurred while processing your request.",
+//                     showConfirmButton: true
+//                 });
+//             }
+//         }
+//     });
+// });
+
+
+
+
+$("#btnSignUp").click(function() {
     let value = {
         email: $("#upUser_Name").val(),
         password: $("#upPassword").val(),
         role: $('#role_Type').val()
     };
-    console.log(value);
+    console.log("Sending request with data:", value);
+
     $.ajax({
         url: "http://localhost:8080/app1/api/v1/auth/signup",
         method: "POST",
         data: JSON.stringify(value),
         contentType: "application/json",
-        success: function (res, textStatus, jsXH) {
+        success: function (res, textStatus, jqXHR) {
+            console.log("Response received:", res);
             localStorage.setItem('accessToken', res.token);
             Swal.fire({
                 icon: "success",
@@ -153,6 +199,7 @@ $("#btnSingUp").click(function() {
             });
         },
         error: function (jqXHR, textStatus, errorThrown) {
+            console.error("Error response:", jqXHR);
             if (jqXHR.status === 403) {
                 Swal.fire({
                     icon: "error",

@@ -1,7 +1,7 @@
 package lk.ijse.gdse66.shoeManagement.app.service.impl;
 
-import lk.ijse.gdse66.shoeManagement.app.auth.request.SingInRequest;
-import lk.ijse.gdse66.shoeManagement.app.auth.request.SingUpRequest;
+import lk.ijse.gdse66.shoeManagement.app.auth.request.SignInRequest;
+import lk.ijse.gdse66.shoeManagement.app.auth.request.SignUpRequest;
 import lk.ijse.gdse66.shoeManagement.app.auth.response.JwtAuthResponse;
 import lk.ijse.gdse66.shoeManagement.app.dto.UserDTO;
 import lk.ijse.gdse66.shoeManagement.app.entity.UserEntity;
@@ -32,7 +32,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
     @Override
-    public JwtAuthResponse signIn(SingInRequest signInRequest) {
+    public JwtAuthResponse signIn(SignInRequest signInRequest) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signInRequest.getEmail(), signInRequest.getPassword()));
         UserEntity user = userRepo.findByEmail(signInRequest.getEmail())
                 .orElseThrow(() -> new UsernameNotFoundException("user not found"));
@@ -41,7 +41,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     @Override
-    public JwtAuthResponse signUp(SingUpRequest signUpRequest) {
+    public JwtAuthResponse signUp(SignUpRequest signUpRequest) {
         UserDTO userDTO = UserDTO.builder()
                 .id(UUID.randomUUID().toString())
                 .email(signUpRequest.getEmail())
