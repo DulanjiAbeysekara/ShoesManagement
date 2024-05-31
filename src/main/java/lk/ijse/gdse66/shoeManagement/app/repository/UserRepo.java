@@ -10,8 +10,5 @@ import java.util.Optional;
 public interface UserRepo extends JpaRepository<UserEntity,String> {
     Optional<UserEntity> findByEmail(String email);
 
-
-    @Query(value = "SELECT * FROM customer c WHERE  c.name = :name", nativeQuery = true)
-    UserEntity findUserByName( @Param("name") String name);
 }
 

@@ -2,9 +2,8 @@ package lk.ijse.gdse66.shoeManagement.app.service;
 
 import org.springframework.security.core.userdetails.UserDetails;
 
-public interface JwtService {
-
-    String extractUserName(String token);
-    String generateToken(UserDetails userDetails);
+public interface JWTService {
+    String generateToken(UserDetails userDetail);
+    String extractUsername(String token);
     boolean isTokenValid(String token, UserDetails userDetails);
 }

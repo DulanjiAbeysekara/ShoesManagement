@@ -64,43 +64,77 @@
         <i class="fas fa-user-plus"></i> User Registration
     </h2>
     <form>
-<!--        <div class="mb-3">-->
-<!--            <label for="userId" class="form-label fw-bold">User ID</label>-->
-<!--            <input type="text" class="form-control" id="userId" placeholder="Enter your user ID">-->
-<!--        </div>-->
+
         <div class="mb-3">
-            <label for="upUser_Name" class="form-label fw-bold" >Email</label>
-            <input type="email" name="email" class="form-control" id="upUser_Name" placeholder="Enter your email">
+            <label for="email" class="form-label fw-bold" >Email</label>
+            <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email">
             </div>
 
-<!--        <div class="mb-3">-->
-<!--            <label for="txtUserName" class="form-label fw-bold">User Name</label>-->
-<!--            <input type="text" class="form-control" id="txtUserName" placeholder="Enter your user name">-->
-<!--        </div>-->
 
         <div class="mb-3">
-            <label for="upPassword" class="form-label fw-bold">New Password</label>
-            <input type="password" name="password" class="form-control" id="upPassword" placeholder="Enter your new password">
+            <label for="password" class="form-label fw-bold">New Password</label>
+            <input type="password" name="password" class="form-control" id="password" placeholder="Enter your new password">
             </div>
-<!--        <div class="mb-3">-->
-<!--            <label for="password" class="form-label fw-bold">Password</label>-->
-<!--            <input type="password" class="form-control" id="password" placeholder="Enter your re-new password">-->
-<!--        </div>-->
+
 
         <div class="mb-3">
-            <label for="role_Type" class="form-label fw-bold">Access Role</label>
-            <select class="form-control" id="role_Type">
+            <label for="role" class="form-label fw-bold">Access Role</label>
+            <select class="form-control" id="role">
                 <option value="ADMIN">ADMIN</option>
                 <option value="USER">USER</option>
             </select>
         </div>
-         <button type="button" class="btn btn-primary w-30" id="btnSignUp">SignUp</button>
+         <button type="button" onclick="saveUser()" class="btn btn-primary w-30" id="btnSignUp">SignUp</button>
 
     </form>
 </div>
 
 <script src="../assest/js/jquery-3.6.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="../controller/LoginController.js"></script>
+
+
+<script>
+    function saveUser() {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const role = document.getElementById('role').value;
+        const signupMessage = document.getElementById('signupMessage');
+
+        // if (!validateEmail(email)) {
+        //     signupMessage.textContent = 'Please enter a valid email address.';
+        //     return;
+        // }
+        //
+        // if (password.length < 6) {
+        //     signupMessage.textContent = 'Password must be at least 6 characters long.';
+        //     return;
+        // }
+
+        const user = {
+            email: email,
+            password: password,
+            accessRole: role.toUpperCase()
+        };
+
+        $.ajax({
+            url: 'http://localhost:8080/user/signup',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(user),
+            success: function(response) {
+                document.getElementById('signupForm').reset();
+                alert('User information saved successfully!');
+                console.log("signUp success: ", response);
+                localStorage.setItem("token", response.token);
+                window.location.href = 'login.html';
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+                signupMessage.textContent = 'Failed to save user information. Please try again.';
+            }
+        });
+    }
+</script>
+
 </body>
 </html>

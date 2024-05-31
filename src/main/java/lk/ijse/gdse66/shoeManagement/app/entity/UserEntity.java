@@ -21,18 +21,17 @@ import java.util.HashSet;
 @Table(name = "user")
 public class UserEntity implements UserDetails {
     @Id
-    private String id;
-    @Column(unique = true)
-    private String email;
+    private String email ;
     private String password;
     @Enumerated(EnumType.STRING)
-    private AccessRole role;
+    private AccessRole accessRole;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         HashSet<GrantedAuthority> authorities = new HashSet<>();
         authorities.add(new SimpleGrantedAuthority(
-                "Role_"+role.name()));
+                "Role_" + accessRole.name()
+        ));
         return authorities;
     }
 
@@ -59,5 +58,6 @@ public class UserEntity implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
+}
+
 }

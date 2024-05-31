@@ -6,9 +6,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 
-public interface UserService {
+public interface UserService  {
+    UserDTO saveUser(UserDTO userDTO);
 
-    UserDetailsService userDetailService();
-    UserDTO searchUser(String id);
-
+    UserDetailsService userDetailsService();
 }

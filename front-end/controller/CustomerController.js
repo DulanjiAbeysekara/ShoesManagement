@@ -31,7 +31,7 @@ $(document).ready(function () {
 
 ////////////////////////////////////////////////////////////////
 
-    generateCustomerID();
+    // generateCustomerID();
     getAll();
 
     $('#btnSave').click(function () {
@@ -39,14 +39,16 @@ $(document).ready(function () {
 
         // performAuthenticatedRequest();
 
-        const accessToken = localStorage.getItem('accessToken')
+        // const accessToken = localStorage.getItem('accessToken')
 
         $.ajax({
-            url: 'http://localhost:8080/app1/cust/save',
+            url: 'http://localhost:8080/cust/save',
             type: 'POST',
+
             headers: {
-                'Authorization': 'Bearer ' + accessToken
+                "Authorization": "Bearer " + localStorage.getItem("token")
             },
+
             contentType: 'application/json',
             data: JSON.stringify(customer),
             success: function (response) {
@@ -64,14 +66,14 @@ $(document).ready(function () {
     $('#btnUpdate').click(function () {
         let customer = getCustomerDataFromForm();
 
-        const accessToken = localStorage.getItem('accessToken');
+        // const accessToken = localStorage.getItem('accessToken');
 
         $.ajax({
-            url: 'http://localhost:8080/app1/cust/update',
+            url: 'http://localhost:8080/cust/update',
             type: 'PATCH',
 
             headers: {
-                'Authorization': 'Bearer ' + accessToken
+                "Authorization": "Bearer " + localStorage.getItem("token")
             },
 
             contentType: 'application/json',
@@ -91,7 +93,7 @@ $(document).ready(function () {
     $('#btnDelete').click(function () {
         let customerCode = $('#txtCustomerCode').val();
 
-        const accessToken = localStorage.getItem('accessToken');
+        // const accessToken = localStorage.getItem('accessToken');
 
         $.ajax({
             url: 'http://localhost:8080/app1/cust/' + customerCode,
@@ -127,14 +129,16 @@ $(document).ready(function () {
     function searchCustomerByName(customerName) {
         $('#tblCustomers tbody').empty();
 
-        const accessToken = localStorage.getItem('accessToken');
+        // const accessToken = localStorage.getItem('accessToken');
 
         $.ajax({
-            url: 'http://localhost:8080/app1/cust/search/' + customerName,
+            url: 'http://localhost:8080/cust/search/' + customerName,
             method: 'GET',
+
             headers: {
-                'Authorization': 'Bearer ' + accessToken
+                "Authorization": "Bearer " + localStorage.getItem("token")
             },
+
             success: function (resp) {
                 if (resp.length === 0) {
                     alert('No customer found with the given name');
@@ -166,13 +170,14 @@ $(document).ready(function () {
     function getAll() {
         $('#tblCustomers tbody').empty();
 
-        const accessToken = localStorage.getItem('accessToken');
+        // const accessToken = localStorage.getItem('accessToken');
 
         $.ajax({
-            url: "http://localhost:8080/app1/cust/getAllCustomers",
+            url: "http://localhost:8080/cust/getAllCustomers",
             method: "GET",
+
             headers: {
-                'Authorization': 'Bearer ' + accessToken
+                "Authorization": "Bearer " + localStorage.getItem("token")
             },
 
             success: function (resp) {
@@ -232,32 +237,32 @@ $(document).ready(function () {
         $("#txtCustomerCode").focus();
     }
 
-    function generateCustomerID() {
-        $("#txtCustomerCode").val("C00-001");
-
-        const accessToken = localStorage.getItem('accessToken');
-
-        $.ajax({
-            url: "http://localhost:8080/app1/cust/cusIdGenerate",
-            method: "GET",
-            headers: {
-                'Authorization': 'Bearer ' + accessToken
-            },
-            contentType: "application/json",
-            dataType: "json",
-            success: function (resp) {
-                let id = resp.value;
-                if (id) {
-                    let tempId = parseInt(id.split("-")[1]) + 1;
-                    let newId = "C00-" + tempId.toString().padStart(3, '0');
-                    $("#txtCustomerCode").val(newId);
-                }
-            },
-            error: function (ob, statusText, error) {
-                console.error("Error generating customer ID:", statusText, error);
-            }
-        });
-    }
+    // function generateCustomerID() {
+    //     $("#txtCustomerCode").val("C00-001");
+    //
+    //     const accessToken = localStorage.getItem('accessToken');
+    //
+    //     $.ajax({
+    //         url: "http://localhost:8080/cust/cusIdGenerate",
+    //         method: "GET",
+    //         headers: {
+    //             'Authorization': 'Bearer ' + accessToken
+    //         },
+    //         contentType: "application/json",
+    //         dataType: "json",
+    //         success: function (resp) {
+    //             let id = resp.value;
+    //             if (id) {
+    //                 let tempId = parseInt(id.split("-")[1]) + 1;
+    //                 let newId = "C00-" + tempId.toString().padStart(3, '0');
+    //                 $("#txtCustomerCode").val(newId);
+    //             }
+    //         },
+    //         error: function (ob, statusText, error) {
+    //             console.error("Error generating customer ID:", statusText, error);
+    //         }
+    //     });
+    // }
 
     function getCustomerDataFromForm() {
         return {

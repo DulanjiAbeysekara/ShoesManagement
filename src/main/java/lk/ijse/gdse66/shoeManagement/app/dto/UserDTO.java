@@ -12,9 +12,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Builder
 public class UserDTO implements Serializable {
-    private String id;
-    private String email;
+    private String email ;
     private String password;
-    private AccessRole role;
-
+    private AccessRole accessRole;
 }

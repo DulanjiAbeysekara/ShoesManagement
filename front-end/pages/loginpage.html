@@ -1,3 +1,169 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <title>Shoe Management</title>-->
+<!--  <link rel="stylesheet" href="../assest/new.css">-->
+<!--  <link rel="stylesheet" href="../assest/bootstrap-5.3.2-dist/css/bootstrap.css">-->
+<!--  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">-->
+<!--  <link rel="preconnect" href="https://fonts.googleapis.com">-->
+<!--  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
+<!--  <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">-->
+<!--  <link rel="preconnect" href="https://fonts.googleapis.com">-->
+<!--  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
+<!--  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">-->
+<!--  <link rel="stylesheet" href="../assest/sweetalert/sweetalert2.min.css">-->
+
+
+<!--  <style>-->
+<!--    body {-->
+<!--      display: flex;-->
+<!--      align-items: center;-->
+<!--      justify-content: center;-->
+<!--      min-height: 100vh;-->
+<!--      margin: 0;-->
+<!--      position: relative;-->
+<!--    }-->
+
+<!--    body::before {-->
+<!--      content: "";-->
+<!--      position: absolute;-->
+<!--      top: 0;-->
+<!--      left: 0;-->
+<!--      width: 100%;-->
+<!--      height: 100%;-->
+<!--      background: linear-gradient(rgba(50, 50, 50, 0.7), rgba(50, 50, 50, 0.7)), url("../assest/image/man-shoes-store-600nw-521505319.webp");-->
+<!--      background-size: cover;-->
+<!--      background-position: center;-->
+<!--      background-repeat: no-repeat;-->
+<!--      z-index: 1;-->
+<!--    }-->
+
+<!--    .login-container {-->
+<!--      max-width: 575px;-->
+<!--      width: 80%;-->
+<!--      padding: 15px;-->
+<!--      background-color: #fff;-->
+<!--      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);-->
+<!--      border-radius: 8px;-->
+<!--      position: relative;-->
+<!--      z-index: 2;-->
+<!--    }-->
+
+<!--    .form-title {-->
+<!--      margin-bottom: 15px;-->
+<!--      font-size: 24px;-->
+<!--      font-weight: bold;-->
+<!--      text-align: center;-->
+<!--      font-family: 'Times New Roman';-->
+<!--    }-->
+
+<!--    .form-control {-->
+<!--      margin-bottom: 15px;-->
+<!--    }-->
+
+<!--    .login-btn {-->
+<!--      width: 100%;-->
+<!--      padding: 10px;-->
+<!--      font-family: 'Abril Fatface', cursive;-->
+<!--    }-->
+<!--  </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="login-container">-->
+<!--  <div class="form-title">Login</div>-->
+<!--  <form>-->
+<!--    <div class="mb-3">-->
+<!--      <label for="username" class="form-label fw-bold" >Email</label>-->
+<!--      <input type="email" name="email" class="form-control" id="username" placeholder="Enter your email">-->
+<!--      </div>-->
+<!--    <div class="mb-3">-->
+<!--      <label for="password" class="form-label fw-bold">New Password</label>-->
+<!--      <input type="password" name="password" class="form-control" id="password" placeholder="Enter your new password">-->
+<!--   </div>-->
+
+<!--      <button type="button" class="btn btn-primary login-btn" id="loginBTN">Login</button>-->
+
+<!--    <a href="userregisration.html">-->
+<!--      <button type="button" class="btn btn-primary login-btn mb-4 mt-4" id="btnSignIn">Sign In</button>-->
+<!--    </a>-->
+<!--    <div class="mt-3 text-center">-->
+<!--      <a href="#">Forgot Password?</a>-->
+<!--    </div>-->
+<!--  </form>-->
+<!--</div>-->
+
+<!--<script src="../assest/js/jquery-3.6.1.min.js"></script>-->
+<!--<script src="../assest/bootstrap-5.3.2-dist/js/bootstrap.bundle.js"></script>-->
+<!--<script src="../assest/sweetalert/sweetalert2.all.min.js"></script>-->
+<!--<script src="../assest/sweetalert/sweetalert2.min.js"></script>-->
+
+<!--<script>-->
+<!--  $(document).ready(function() {-->
+<!--    let txtLogEmail = $("#username");-->
+<!--    let txtLogPassword = $("#password");-->
+
+
+<!--    $("#loginBTN").click(function () {-->
+
+<!--      alert("hiiiii");-->
+<!--      if (checkEmptyLogInInputs()) {-->
+<!--        let email = txtLogEmail.val();-->
+<!--        let password = txtLogPassword.val();-->
+
+<!--        let logInObj = {-->
+<!--          email: email,-->
+<!--          password: password-->
+<!--        };-->
+<!--            alert("hiiii")-->
+<!--        $.ajax({-->
+<!--          url: "http://localhost:8080/user/signin",-->
+<!--          method: "POST",-->
+<!--          data: JSON.stringify(logInObj),-->
+<!--          contentType: "application/json",-->
+<!--          headers: {-->
+<!--            "Authorization": "Bearer " + localStorage.getItem("token")-->
+<!--          },-->
+<!--          success: function (resp, textStatus, jqxhr) {-->
+<!--            localStorage.setItem("token", resp.token);-->
+<!--            switchToAnotherPageFromLogin(resp);-->
+<!--            clearLogInInputFields();-->
+
+
+<!--          },-->
+<!--          error: function (xhr, textStatus, error) {-->
+<!--            if (xhr.status === 401) {-->
+<!--              alert("Incorrect Password!");-->
+<!--            } else if (xhr.status === 404) {-->
+<!--              alert("User email not found!");-->
+<!--            } else {-->
+<!--              alert("Failed to login. Please try again.");-->
+<!--            }-->
+<!--          }-->
+<!--        });-->
+<!--      }-->
+<!--    });-->
+
+<!--    function switchToAnotherPageFromLogin(resp) {-->
+<!--      let empEmail = txtLogEmail.val();-->
+<!--      localStorage.setItem("empEmail", empEmail);-->
+
+<!--      if (resp.accessRole === "ADMIN") {-->
+<!--        window.location.href = 'front-end/pages/homepagerAdmin.html';-->
+<!--        sentEmail();-->
+<!--      } else if (resp.accessRole === "USER") {-->
+<!--        window.location.href = 'front-end/userpage/homepageUser.html';-->
+<!--      } else {-->
+<!--        alert("Job role not found!");-->
+<!--      }-->
+<!--    }-->
+<!--  });-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +179,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assest/sweetalert/sweetalert2.min.css">
-
 
   <style>
     body {
@@ -74,15 +239,15 @@
   <div class="form-title">Login</div>
   <form>
     <div class="mb-3">
-      <label for="upUser_Name" class="form-label fw-bold" >Email</label>
-      <input type="email" name="email" class="form-control" id="upUser_Name" placeholder="Enter your email">
-      </div>
+      <label for="username" class="form-label fw-bold">Email</label>
+      <input type="email" name="email" class="form-control" id="username" placeholder="Enter your email">
+    </div>
     <div class="mb-3">
-      <label for="upPassword" class="form-label fw-bold">New Password</label>
-      <input type="password" name="password" class="form-control" id="upPassword" placeholder="Enter your new password">
-   </div>
+      <label for="password" class="form-label fw-bold">New Password</label>
+      <input type="password" name="password" class="form-control" id="password" placeholder="Enter your new password">
+    </div>
 
-      <button type="button" class="btn btn-primary login-btn" id="btnLogin">Login</button>
+    <button type="button" class="btn btn-primary login-btn" id="loginBTN">Login</button>
 
     <a href="userregisration.html">
       <button type="button" class="btn btn-primary login-btn mb-4 mt-4" id="btnSignIn">Sign In</button>
@@ -97,6 +262,72 @@
 <script src="../assest/bootstrap-5.3.2-dist/js/bootstrap.bundle.js"></script>
 <script src="../assest/sweetalert/sweetalert2.all.min.js"></script>
 <script src="../assest/sweetalert/sweetalert2.min.js"></script>
-<script src="../controller/LoginController.js"></script>
+
+<script>
+  $(document).ready(function() {
+    let txtLogEmail = $("#username");
+    let txtLogPassword = $("#password");
+
+    $("#loginBTN").click(function () {
+      if (checkEmptyLogInInputs()) {
+        let email = txtLogEmail.val();
+        let password = txtLogPassword.val();
+
+        let logInObj = {
+          email: email,
+          password: password
+        };
+
+        $.ajax({
+          url: "http://localhost:8080/user/signin",
+          method: "POST",
+          data: JSON.stringify(logInObj),
+          contentType: "application/json",
+          success: function (resp, textStatus, jqxhr) {
+            localStorage.setItem("token", resp.token);
+            switchToAnotherPageFromLogin(resp);
+            clearLogInInputFields();
+          },
+          error: function (xhr, textStatus, error) {
+            if (xhr.status === 401) {
+              alert("Incorrect Password!");
+            } else if (xhr.status === 404) {
+              alert("User email not found!");
+            } else {
+              alert("Failed to login. Please try again.");
+            }
+          }
+        });
+      }
+    });
+
+    function switchToAnotherPageFromLogin(resp) {
+      let empEmail = txtLogEmail.val();
+      localStorage.setItem("empEmail", empEmail);
+
+      if (resp.accessRole === "ADMIN") {
+        window.location.href = 'homepagerAdmin.html';
+        sentEmail();
+      } else if (resp.accessRole === "USER") {
+        window.location.href = 'front-end/userpage/homepageUser.html';
+      } else {
+        alert("Job role not found!");
+      }
+    }
+
+    function checkEmptyLogInInputs() {
+      if (txtLogEmail.val().trim() === "" || txtLogPassword.val().trim() === "") {
+        alert("Please fill out all fields.");
+        return false;
+      }
+      return true;
+    }
+
+    function clearLogInInputFields() {
+      txtLogEmail.val('');
+      txtLogPassword.val('');
+    }
+  });
+</script>
 </body>
 </html>

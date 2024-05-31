@@ -21,24 +21,25 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
 public class UserServiceImpl implements UserService {
-    private final PasswordEncoder passwordEncoder;
-    private final UserRepo userRepo;
-    private final ModelMapper mapper;
+    @Autowired
+    private UserRepo userRepo;
+
+    @Autowired
+    private ModelMapper mapper;
 
     @Override
-    public UserDetailsService userDetailService() {
-        return username -> userRepo.findByEmail(username)
-                .orElseThrow(() -> new
-                        UsernameNotFoundException(
-                        "user not found"));
-    }
-    @Override
-    public UserDTO searchUser(String id){
-        return (UserDTO) userRepo.findByEmail(id)
-                .map(user -> mapper.map(user, UserDTO.class)
-                )
-                .orElseThrow(() -> new RuntimeException("User Not Exist"));
+    public UserDTO saveUser(UserDTO userDTO) {
+        if (userRepo.existsById(userDTO.getEmail())){
+            throw new DuplicateRecordException("User is already exists !!");
         }
+        return mapper.map(userRepo.save(mapper.map(userDTO, UserEntity.class)),UserDTO.class);
+    }
+
+    @Override
+    public UserDetailsService userDetailsService() {
+        return username -> {
+            return  userRepo.findByEmail(username).orElseThrow(()->new UsernameNotFoundException("User Not Found"));
+        };
+    }
 }
