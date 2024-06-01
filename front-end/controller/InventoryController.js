@@ -34,8 +34,11 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: 'http://localhost:8080/app1/inventory/save',
+            url: 'http://localhost:8080/inventory/save',
             type: 'POST',
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
             contentType: 'application/json',
             data: JSON.stringify(item),
             success: function (response) {
@@ -83,8 +86,11 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: 'http://localhost:8080/app1/inventory/update',
+            url: 'http://localhost:8080/inventory/update',
             type: 'PATCH',
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
             contentType: 'application/json',
             data: JSON.stringify(item),
             success: function (response) {
@@ -105,8 +111,11 @@ $(document).ready(function () {
         let itemCode = $('#txtItemCode').val();
 
         $.ajax({
-            url: 'http://localhost:8080/app1/inventory/' + itemCode,
+            url: 'http://localhost:8080/inventory/' + itemCode,
             type: 'DELETE',
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
             success: function (response) {
                 alert('Item information deleted successfully!');
                 console.log('Deleted item with code:', itemCode);
@@ -134,8 +143,11 @@ $(document).ready(function () {
         $('#tblItem tbody').empty();
 
         $.ajax({
-            url: 'http://localhost:8080/app1/inventory/search/' + id,
+            url: 'http://localhost:8080/inventory/search/' + id,
             method: 'GET',
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
             success: function (resp) {
                 if (resp.length === 0) {
                     alert('No item found with the given id');
@@ -171,8 +183,11 @@ $(document).ready(function () {
         $('#tblItem tbody').empty();
 
         $.ajax({
-            url: "http://localhost:8080/app1/inventory/getAllInventory",
+            url: "http://localhost:8080/inventory/getAllInventory",
             method: "GET",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
             success: function (resp) {
                 for (const item of resp) {
                     let row = `<tr>
@@ -250,8 +265,11 @@ $(document).ready(function () {
     function generateInventoryID() {
         $("#txtItemCode").val("ITEM00-001");
         $.ajax({
-            url: "http://localhost:8080/app1/inventory/itemIdGenerate",
+            url: "http://localhost:8080/inventory/itemIdGenerate",
             method: "GET",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
             contentType: "application/json",
             dataType: "json",
             success: function (resp) {
@@ -267,23 +285,6 @@ $(document).ready(function () {
             }
         });
     }
-
-
-// function getInventoryDataFromForm() {
-//     return {
-//         customerCode: $('#txtCustomerCode').val(),
-//         customerName: $('#txtCustomerName').val(),
-//         gender: $('#txtGender').find(':selected').val(),
-//         joinDateLoyaltyCustomer: $('#txtJoinDateLoyaltyCustomer').val(),
-//         level: $('#txtLevel').find(':selected').val(),
-//         totalPoints: $('#txtTotalPoints').val(),
-//         dateOfBirth: $('#txtDateOfBirth').val(),
-//         address: $('#txtAddress').val()
-//
-//
-//
-//     };
-// }
 
 
 });

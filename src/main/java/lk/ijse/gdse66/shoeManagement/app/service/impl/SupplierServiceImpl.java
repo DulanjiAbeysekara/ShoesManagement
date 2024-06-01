@@ -86,9 +86,9 @@ public class SupplierServiceImpl implements SupplierService {
                 .toList();
     }
 
-//    @Override
-//    public CustomDTO supplierIdGenerate() {
-//        return new CustomDTO(supplierRepo.getLastIndex());
-//
-//    }
+    @Override
+    public CustomDTO supplierIdGenerate() {
+        return new CustomDTO(supplierRepo.getLastIndex());
+
+    }
 }

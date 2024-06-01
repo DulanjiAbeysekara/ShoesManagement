@@ -232,31 +232,31 @@ $(document).ready(function () {
         $("#txtSupplierCode").focus();
     }
 
-    // function generateSupplierID() {
-    //     $("#txtSupplierCode").val("SUP00-001");
-    //     $.ajax({
-    //         url: "http://localhost:8080/supplier/supplierIdGenerate",
-    //         method: "GET",
-    //
-    //         headers: {
-    //             "Authorization": "Bearer " + localStorage.getItem("token")
-    //         },
-    //
-    //         contentType: "application/json",
-    //         dataType: "json",
-    //         success: function (resp) {
-    //             let id = resp.value;
-    //             if (id) {
-    //                 let tempId = parseInt(id.split("-")[1]) + 1;
-    //                 let newId = "SUP00-" + tempId.toString().padStart(3, '0');
-    //                 $("#txtSupplierCode").val(newId);
-    //             }
-    //         },
-    //         error: function (ob, statusText, error) {
-    //             console.error("Error generating customer ID:", statusText, error);
-    //         }
-    //     });
-    // }
+    function generateSupplierID() {
+        $("#txtSupplierCode").val("SUP00-001");
+        $.ajax({
+            url: "http://localhost:8080/supplier/supplierIdGenerate",
+            method: "GET",
+
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+
+            contentType: "application/json",
+            dataType: "json",
+            success: function (resp) {
+                let id = resp.value;
+                if (id) {
+                    let tempId = parseInt(id.split("-")[1]) + 1;
+                    let newId = "SUP00-" + tempId.toString().padStart(3, '0');
+                    $("#txtSupplierCode").val(newId);
+                }
+            },
+            error: function (ob, statusText, error) {
+                console.error("Error generating customer ID:", statusText, error);
+            }
+        });
+    }
 
 
 });

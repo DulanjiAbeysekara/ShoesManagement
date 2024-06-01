@@ -19,7 +19,7 @@ public class EmployeeEntity {
     private String employeeName;
 
     @Column(columnDefinition = "LONGTEXT")
-    private String EmployeeProfilePic;
+    private String employeeProfilePic;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;

@@ -19,8 +19,8 @@ public interface SupplierService {
     boolean deleteSupplier(String id);
 
     List<SupplierDTO> searchSupplier(String id);
-//
-//    @ResponseBody
-//    CustomDTO supplierIdGenerate();
+
+    @ResponseBody
+    CustomDTO supplierIdGenerate();
 
 }

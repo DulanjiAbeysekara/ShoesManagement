@@ -20,8 +20,8 @@ public interface EmployeeService {
 
     List<EmployeeDTO> searchEmployee(String id);
 
-//    @ResponseBody
-//    CustomDTO employeeIdGenerate();
+    @ResponseBody
+    CustomDTO employeeIdGenerate();
 
 
 //    String generateNextId();

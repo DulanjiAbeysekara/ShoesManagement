@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-    // generateEmployeeID();
+    generateEmployeeID();
     getAll();
 
     $('#employeeSaveBtn').click(function () {
@@ -81,7 +81,7 @@ $(document).ready(function () {
     // $('#txtEmployeePicture').change(function() {
     //     var fileInput = $('#txtEmployeePicture')[0];
     //     var file = fileInput.files[0];
-
+    //
     //     if (file && (file.type.includes('image') || file.type === 'image/gif')) {
     //         var reader = new FileReader();
     //         reader.onload = function (e) {
@@ -123,6 +123,7 @@ $(document).ready(function () {
                     let row = `<tr>
                                 <td>${employee.employeeCode}</td>
                                 <td>${employee.employeeName}</td>
+                                <td>${employee.employeeProfilePic}</td>
                                 <td>${employee.gender}</td>
                                 <td>${employee.status}</td>
                                 <td>${employee.designation}</td>
@@ -160,6 +161,7 @@ $(document).ready(function () {
                     let row = `<tr>
                                 <td>${employee.employeeCode}</td>
                                 <td>${employee.employeeName}</td>
+                                <td>${employee.employeeProfilePic}</td>
                                 <td>${employee.gender}</td>
                                 <td>${employee.status}</td>
                                 <td>${employee.designation}</td>
@@ -184,18 +186,20 @@ $(document).ready(function () {
         $('#tblEmployee tbody>tr').click(function () {
             let employeeCode = $(this).children(':nth-child(1)').text();
             let employeeName = $(this).children(':nth-child(2)').text();
-            let gender = $(this).children(':nth-child(3)').text();
-            let status = $(this).children(':nth-child(4)').text();
-            let designation = $(this).children(':nth-child(5)').text();
-            let accessRole = $(this).children(':nth-child(6)').text();
-            let dob = $(this).children(':nth-child(7)').text();
-            let dateOfJoin = $(this).children(':nth-child(8)').text();
-            let attachedBranch = $(this).children(':nth-child(9)').text();
-            let address = $(this).children(':nth-child(10)').text();
-            let contactNo = $(this).children(':nth-child(11)').text();
+            let employeeProfilePic=$(this).children(':nth-child(3)').text();
+            let gender = $(this).children(':nth-child(4)').text();
+            let status = $(this).children(':nth-child(5)').text();
+            let designation = $(this).children(':nth-child(6)').text();
+            let accessRole = $(this).children(':nth-child(7)').text();
+            let dob = $(this).children(':nth-child(8)').text();
+            let dateOfJoin = $(this).children(':nth-child(9)').text();
+            let attachedBranch = $(this).children(':nth-child(10)').text();
+            let address = $(this).children(':nth-child(11)').text();
+            let contactNo = $(this).children(':nth-child(12)').text();
 
             $('#txtEmployeeCode').val(employeeCode);
             $('#txtEmployeeName').val(employeeName);
+            $('#txtEmployeePicture').val(employeeProfilePic);
             $('#txtEmployeeGender').val(gender);
             $('#txtEmployeeStatus').val(status);
             $('#txtEmployeeDesignation').val(designation);
@@ -211,6 +215,7 @@ $(document).ready(function () {
     function clearFields() {
         $('#txtEmployeeCode').val('');
         $('#txtEmployeeName').val('');
+        $('#txtEmployeePicture').val('');
         $('#txtEmployeeGender').val('');
         $('#txtEmployeeStatus').val('');
         $('#txtEmployeeDesignation').val('');
@@ -224,36 +229,37 @@ $(document).ready(function () {
         $("#txtEmployeeCode").focus();
     }
 
-    // function generateEmployeeID() {
-    //     $("#txtEmployeeCode").val("EMP00-001");
-    //     $.ajax({
-    //         url: "http://localhost:8080/employee/employeeGenerate",
-    //         method: "GET",
-    // headers: {
-    //     "Authorization": "Bearer " + localStorage.getItem("token")
-    // },
+    function generateEmployeeID() {
+        $("#txtEmployeeCode").val("EMP00-001");
+        $.ajax({
+            url: "http://localhost:8080/employee/employeeGenerate",
+            method: "GET",
+            headers: {
+        "Authorization": "Bearer " + localStorage.getItem("token")
+    },
 
-    //         contentType: "application/json",
-    //         dataType: "json",
-    //         success: function (resp) {
-    //             let id = resp.value;
-    //             if (id) {
-    //                 let tempId = parseInt(id.split("-")[1]) + 1;
-    //                 let newId = "EMP00-" + tempId.toString().padStart(3, '0');
-    //                 $("#txtEmployeeCode").val(newId);
-    //             }
-    //         },
-    //         error: function (ob, statusText, error) {
-    //             console.error("Error generating employee ID:", statusText, error);
-    //         }
-    //     });
-    // }
+            contentType: "application/json",
+            dataType: "json",
+            success: function (resp) {
+                let id = resp.value;
+                if (id) {
+                    let tempId = parseInt(id.split("-")[1]) + 1;
+                    let newId = "EMP00-" + tempId.toString().padStart(3, '0');
+                    $("#txtEmployeeCode").val(newId);
+                }
+            },
+            error: function (ob, statusText, error) {
+                console.error("Error generating employee ID:", statusText, error);
+            }
+        });
+    }
 
 
     function getEmployeeDataFromForm() {
         return {
             employeeCode: $('#txtEmployeeCode').val(),
             employeeName: $('#txtEmployeeName').val(),
+            employeeProfilePic:$('#txtEmployeePicture').val(),
             gender: $('#txtEmployeeGender').find(':selected').val(),
             status: $('#txtEmployeeStatus').val(),
             designation: $('#txtEmployeeDesignation').val(),

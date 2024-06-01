@@ -53,10 +53,10 @@ public class InventoryController {
         return inventoryService.searchInventory(id);
     }
 
-//    @ResponseStatus(HttpStatus.CREATED)
-//    @GetMapping(path = "/itemIdGenerate")
-//    public @ResponseBody
-//    CustomDTO inventoryIdGenerate() {
-//        return inventoryService.inventoryIdGenerate();
-//    }
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping(path = "/itemIdGenerate")
+    public @ResponseBody
+    CustomDTO inventoryIdGenerate() {
+        return inventoryService.inventoryIdGenerate();
+    }
 }
