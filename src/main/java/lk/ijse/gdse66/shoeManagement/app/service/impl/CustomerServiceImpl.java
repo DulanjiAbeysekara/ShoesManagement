@@ -99,8 +99,8 @@ public class CustomerServiceImpl implements CustomerService {
 //        return mapper.map(customerRepo.findByCode(code),CustomerDTO.class);
 //    }
 //
-//    @Override
-//    public CustomDTO customerIdGenerate() {
-//        return new CustomDTO(customerRepo.getLastIndex());
-//        }
+    @Override
+    public CustomDTO customerIdGenerate() {
+        return new CustomDTO(customerRepo.getLastIndex());
+        }
 }

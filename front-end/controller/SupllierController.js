@@ -25,8 +25,13 @@ $(document).ready(function () {
 
 
         $.ajax({
-            url: 'http://localhost:8080/app1/supplier/save',
+            url: 'http://localhost:8080/supplier/save',
             type: 'POST',
+
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+
             contentType: 'application/json',
             data: JSON.stringify(supplier),
             success: function (response) {
@@ -63,8 +68,13 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: 'http://localhost:8080/app1/supplier/update',
+            url: 'http://localhost:8080/supplier/update',
             type: 'PATCH',
+
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+
             contentType: 'application/json',
             data: JSON.stringify(supplier),
             success: function (response) {
@@ -87,8 +97,13 @@ $(document).ready(function () {
         let code = $('#txtSupplierCode').val();
 
         $.ajax({
-            url: 'http://localhost:8080/app1/supplier/' + code,
+            url: 'http://localhost:8080/supplier/' + code,
             type: 'DELETE',
+
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+
             success: function (response) {
                 alert('Supplier information deleted successfully!');
                 console.log('Deleted supplier with code:', code);
@@ -116,8 +131,13 @@ $(document).ready(function () {
         $('#tblSupplier tbody').empty();
 
         $.ajax({
-            url: 'http://localhost:8080/app1/supplier/search/' + id,
+            url: 'http://localhost:8080/supplier/search/' + id,
             method: 'GET',
+
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+
             success: function (resp) {
                 if (resp.length === 0) {
                     alert('No supplier found with the given id');
@@ -148,8 +168,13 @@ $(document).ready(function () {
         $('#tblSupplier tbody').empty();
 
         $.ajax({
-            url: "http://localhost:8080/app1/supplier/getAllSupplier",
+            url: "http://localhost:8080/supplier/getAllSupplier",
             method: "GET",
+
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+
             success: function (resp) {
                 for (const supplier of resp) {
                     let row = `<tr>
@@ -207,26 +232,31 @@ $(document).ready(function () {
         $("#txtSupplierCode").focus();
     }
 
-    function generateSupplierID() {
-        $("#txtSupplierCode").val("SUP00-001");
-        $.ajax({
-            url: "http://localhost:8080/app1/supplier/supplierIdGenerate",
-            method: "GET",
-            contentType: "application/json",
-            dataType: "json",
-            success: function (resp) {
-                let id = resp.value;
-                if (id) {
-                    let tempId = parseInt(id.split("-")[1]) + 1;
-                    let newId = "SUP00-" + tempId.toString().padStart(3, '0');
-                    $("#txtSupplierCode").val(newId);
-                }
-            },
-            error: function (ob, statusText, error) {
-                console.error("Error generating customer ID:", statusText, error);
-            }
-        });
-    }
+    // function generateSupplierID() {
+    //     $("#txtSupplierCode").val("SUP00-001");
+    //     $.ajax({
+    //         url: "http://localhost:8080/supplier/supplierIdGenerate",
+    //         method: "GET",
+    //
+    //         headers: {
+    //             "Authorization": "Bearer " + localStorage.getItem("token")
+    //         },
+    //
+    //         contentType: "application/json",
+    //         dataType: "json",
+    //         success: function (resp) {
+    //             let id = resp.value;
+    //             if (id) {
+    //                 let tempId = parseInt(id.split("-")[1]) + 1;
+    //                 let newId = "SUP00-" + tempId.toString().padStart(3, '0');
+    //                 $("#txtSupplierCode").val(newId);
+    //             }
+    //         },
+    //         error: function (ob, statusText, error) {
+    //             console.error("Error generating customer ID:", statusText, error);
+    //         }
+    //     });
+    // }
 
 
 });

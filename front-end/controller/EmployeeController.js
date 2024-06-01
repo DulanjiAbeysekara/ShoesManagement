@@ -1,14 +1,18 @@
 
 $(document).ready(function () {
-    generateEmployeeID();
+    // generateEmployeeID();
     getAll();
 
     $('#employeeSaveBtn').click(function () {
         let employee = getEmployeeDataFromForm();
 
         $.ajax({
-            url: 'http://localhost:8080/app1/employee/save',
+            url: 'http://localhost:8080/employee/save',
             type: 'POST',
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+
             contentType: 'application/json',
             data: JSON.stringify(employee),
             success: function (response) {
@@ -28,8 +32,13 @@ $(document).ready(function () {
         let employee = getEmployeeDataFromForm();
 
         $.ajax({
-            url: 'http://localhost:8080/app1/employee/update',
+            url: 'http://localhost:8080/employee/update',
             type: 'PATCH',
+
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+
             contentType: 'application/json',
             data: JSON.stringify(employee),
             success: function (response) {
@@ -49,8 +58,13 @@ $(document).ready(function () {
         let employeeCode = $('#txtEmployeeCode').val();
 
         $.ajax({
-            url: 'http://localhost:8080/app1/employee/' + employeeCode,
+            url: 'http://localhost:8080/employee/' + employeeCode,
             type: 'DELETE',
+
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+
             success: function (response) {
                 alert('Employee information deleted successfully!');
                 console.log('Deleted employee with code:', employeeCode);
@@ -93,8 +107,13 @@ $(document).ready(function () {
         $('#tblEmployee tbody').empty();
 
         $.ajax({
-            url: 'http://localhost:8080/app1/employee/search/' + id,
+            url: 'http://localhost:8080/employee/search/' + id,
             method: 'GET',
+
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+
             success: function (resp) {
                 if (resp.length === 0) {
                     alert('No employee found with the given id');
@@ -129,8 +148,13 @@ $(document).ready(function () {
         $('#tblEmployee tbody').empty();
 
         $.ajax({
-            url: "http://localhost:8080/app1/employee/getAllEmployee",
+            url: "http://localhost:8080/employee/getAllEmployee",
             method: "GET",
+
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+
             success: function (resp) {
                 for (const employee of resp) {
                     let row = `<tr>
@@ -200,26 +224,30 @@ $(document).ready(function () {
         $("#txtEmployeeCode").focus();
     }
 
-    function generateEmployeeID() {
-        $("#txtEmployeeCode").val("EMP00-001");
-        $.ajax({
-            url: "http://localhost:8080/app1/employee/employeeGenerate",
-            method: "GET",
-            contentType: "application/json",
-            dataType: "json",
-            success: function (resp) {
-                let id = resp.value;
-                if (id) {
-                    let tempId = parseInt(id.split("-")[1]) + 1;
-                    let newId = "EMP00-" + tempId.toString().padStart(3, '0');
-                    $("#txtEmployeeCode").val(newId);
-                }
-            },
-            error: function (ob, statusText, error) {
-                console.error("Error generating employee ID:", statusText, error);
-            }
-        });
-    }
+    // function generateEmployeeID() {
+    //     $("#txtEmployeeCode").val("EMP00-001");
+    //     $.ajax({
+    //         url: "http://localhost:8080/employee/employeeGenerate",
+    //         method: "GET",
+    // headers: {
+    //     "Authorization": "Bearer " + localStorage.getItem("token")
+    // },
+
+    //         contentType: "application/json",
+    //         dataType: "json",
+    //         success: function (resp) {
+    //             let id = resp.value;
+    //             if (id) {
+    //                 let tempId = parseInt(id.split("-")[1]) + 1;
+    //                 let newId = "EMP00-" + tempId.toString().padStart(3, '0');
+    //                 $("#txtEmployeeCode").val(newId);
+    //             }
+    //         },
+    //         error: function (ob, statusText, error) {
+    //             console.error("Error generating employee ID:", statusText, error);
+    //         }
+    //     });
+    // }
 
 
     function getEmployeeDataFromForm() {

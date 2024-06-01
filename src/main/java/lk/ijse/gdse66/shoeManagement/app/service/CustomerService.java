@@ -19,7 +19,7 @@ public interface CustomerService {
 
     List<CustomerDTO> searchCustomer(String name);
 
-//    @ResponseBody
-//    CustomDTO customerIdGenerate();
+    @ResponseBody
+    CustomDTO customerIdGenerate();
 }
 

@@ -31,7 +31,7 @@ $(document).ready(function () {
 
 ////////////////////////////////////////////////////////////////
 
-    // generateCustomerID();
+    generateCustomerID();
     getAll();
 
     $('#btnSave').click(function () {
@@ -96,12 +96,13 @@ $(document).ready(function () {
         // const accessToken = localStorage.getItem('accessToken');
 
         $.ajax({
-            url: 'http://localhost:8080/app1/cust/' + customerCode,
+            url: 'http://localhost:8080/cust/' + customerCode,
             type: 'DELETE',
 
             headers: {
-                'Authorization': 'Bearer ' + accessToken
+                "Authorization": "Bearer " + localStorage.getItem("token")
             },
+
 
             success: function (response) {
                 alert('Customer information deleted successfully!');
@@ -237,32 +238,32 @@ $(document).ready(function () {
         $("#txtCustomerCode").focus();
     }
 
-    // function generateCustomerID() {
-    //     $("#txtCustomerCode").val("C00-001");
-    //
-    //     const accessToken = localStorage.getItem('accessToken');
-    //
-    //     $.ajax({
-    //         url: "http://localhost:8080/cust/cusIdGenerate",
-    //         method: "GET",
-    //         headers: {
-    //             'Authorization': 'Bearer ' + accessToken
-    //         },
-    //         contentType: "application/json",
-    //         dataType: "json",
-    //         success: function (resp) {
-    //             let id = resp.value;
-    //             if (id) {
-    //                 let tempId = parseInt(id.split("-")[1]) + 1;
-    //                 let newId = "C00-" + tempId.toString().padStart(3, '0');
-    //                 $("#txtCustomerCode").val(newId);
-    //             }
-    //         },
-    //         error: function (ob, statusText, error) {
-    //             console.error("Error generating customer ID:", statusText, error);
-    //         }
-    //     });
-    // }
+    function generateCustomerID() {
+        $("#txtCustomerCode").val("C00-001");
+
+        // const accessToken = localStorage.getItem('accessToken');
+
+        $.ajax({
+            url: "http://localhost:8080/cust/cusIdGenerate",
+            method: "GET",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+            contentType: "application/json",
+            dataType: "json",
+            success: function (resp) {
+                let id = resp.value;
+                if (id) {
+                    let tempId = parseInt(id.split("-")[1]) + 1;
+                    let newId = "C00-" + tempId.toString().padStart(3, '0');
+                    $("#txtCustomerCode").val(newId);
+                }
+            },
+            error: function (ob, statusText, error) {
+                console.error("Error generating customer ID:", statusText, error);
+            }
+        });
+    }
 
     function getCustomerDataFromForm() {
         return {
