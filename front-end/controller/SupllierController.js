@@ -1,6 +1,20 @@
 
 $(document).ready(function () {
 
+    // $("#txtEmail").keyup(function (e) {
+    //     const email= $(this).val();
+    //
+    //     if (regExEmpEmailAddress.test(email)) {
+    //         $('#txtEmail').css("border-color", "transparent");
+    //         $('#emailError').hide();
+    //     } else {
+    //         $('#txtEmail').css("border-color", "red");
+    //         $('#emailError').show();
+    //     }
+    // });
+
+
+    /////////////////////////////////////////////////////
     generateSupplierID();
     getAll();
 

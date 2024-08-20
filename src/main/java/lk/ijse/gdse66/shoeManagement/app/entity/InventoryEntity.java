@@ -21,6 +21,7 @@ public class InventoryEntity {
 
     private String itemDesc;
 
+//    @Column(columnDefinition = "LONGTEXT")
     private String itemPicture;
 
     private String category;

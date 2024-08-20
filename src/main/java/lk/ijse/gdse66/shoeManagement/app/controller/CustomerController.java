@@ -60,12 +60,7 @@ public class CustomerController {
         return customerService.searchCustomer(name);
     }
 
-//        @ResponseStatus(HttpStatus.CREATED)
-//    @GetMapping(path = "/customerGenerate")
-//    public @ResponseBody
-//    CustomDTO employeeIdGenerate() {
-//        return customerService.();
-//    }
+
 
 
 
